@@ -1,15 +1,62 @@
-import FeaturedProperties from "@/sections/FeaturedProperties";
+import PropertyCard from "@/components/PropertyCard";
+import { getAllProperties } from "@/lib/api";
 
-export default function PropertiesPage() {
+interface Property {
+  uid: string;
+  title: string;
+  price: string;
+  location: string;
+  slug: string;
+  beds?: string | number;
+  baths?: string | number;
+  images?: { url: string }[];
+}
+
+export default async function PropertiesPage() {
+  const properties = ((await getAllProperties()) as Property[]) || [];
+
   return (
     <main>
-      <section className="px-8 py-12">
-        <h1 className="text-4xl font-bold mb-8">
-          All Properties
-        </h1>
+      {/* Page Header */}
+      <div style={{ backgroundColor: "#1e1e1e" }} className="py-16 md:py-20 px-6">
+        <div className="max-w-7xl mx-auto">
+          <h1
+            className="font-medium text-white"
+            style={{ fontSize: "clamp(1.75rem, 5vw, 2rem)" }}
+          >
+            All Properties
+          </h1>
+        </div>
+      </div>
 
-        <FeaturedProperties />
-      </section>
+      {/* Listings */}
+      <div className="max-w-7xl mx-auto px-6 py-16">
+        {properties.length === 0 ? (
+          <div className="text-center py-24 border border-dashed border-gray-300">
+            <h2 className="text-xl font-medium" style={{ color: "#343a40" }}>
+              No properties found
+            </h2>
+            <p className="text-sm mt-2" style={{ color: "#6c757d" }}>
+              Please check back later.
+            </p>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {properties.map((property) => (
+              <PropertyCard
+                key={property.uid}
+                title={property.title}
+                price={property.price}
+                location={property.location}
+                slug={property.slug}
+                beds={property.beds}
+                baths={property.baths}
+                image={property.images?.[0]?.url || "/fallback-property.jpg"}
+              />
+            ))}
+          </div>
+        )}
+      </div>
     </main>
   );
 }

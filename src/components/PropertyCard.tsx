@@ -6,6 +6,8 @@ type Props = {
   image: string;
   location: string;
   slug: string;
+  beds?: string | number;
+  baths?: string | number;
 };
 
 const PropertyCard = ({
@@ -14,20 +16,52 @@ const PropertyCard = ({
   image,
   location,
   slug,
+  beds,
+  baths,
 }: Props) => {
   return (
-    <Link href={`/properties/${slug}`}>
-      <div className="bg-[#111] rounded-xl overflow-hidden shadow-lg hover:scale-105 transition cursor-pointer">
-        <img
-          src={image}
-          alt={title}
-          className="w-full h-60 object-cover"
-        />
+    <Link href={`/properties/${slug}`} className="block group">
+      <div className="bg-white border border-gray-200 overflow-hidden shadow-sm hover:shadow-lg transition-shadow duration-300">
+        {/* Image */}
+        <div className="img-zoom relative">
+          <img
+            src={image}
+            alt={title}
+            className="w-full h-56 object-cover"
+          />
+        </div>
 
-        <div className="p-4">
-          <h3 className="text-lg font-semibold">{title}</h3>
-          <p className="text-gray-400">{location}</p>
-          <p className="mt-2 font-medium">{price}</p>
+        {/* Content */}
+        <div className="p-5">
+          {/* Price */}
+          <p className="text-sm font-medium mb-2" style={{ color: "#e63946" }}>
+            {price}
+          </p>
+
+          {/* Address / Title */}
+          <h3 className="text-base font-medium mb-1" style={{ color: "#343a40" }}>
+            {title}
+          </h3>
+          <p className="text-xs mb-3" style={{ color: "#6c757d" }}>
+            {location}
+          </p>
+
+          {/* Meta */}
+          {(beds || baths) && (
+            <p className="text-xs mb-3" style={{ color: "#6c757d" }}>
+              {beds && <span>{beds} beds</span>}
+              {beds && baths && <span> &middot; </span>}
+              {baths && <span>{baths} baths</span>}
+            </p>
+          )}
+
+          {/* CTA */}
+          <span
+            className="inline-block text-sm font-medium group-hover:underline transition-colors duration-200"
+            style={{ color: "#e63946" }}
+          >
+            See details &rarr;
+          </span>
         </div>
       </div>
     </Link>

@@ -5,93 +5,133 @@ export default async function AboutPage() {
   const achievements = await getAchievements();
 
   if (!about) {
-    return <main className="px-8 py-20 text-center text-gray-400">About page content not found.</main>;
+    return (
+      <main className="px-6 py-20 text-center" style={{ color: "#6c757d" }}>
+        About page content not found.
+      </main>
+    );
   }
 
   return (
-    <main className="px-8 py-10 space-y-16 max-w-6xl mx-auto">
-      {/* Hero */}
-      <section>
-        <h1 className="text-5xl font-bold tracking-tight">
-          {about.title}
-        </h1>
-      </section>
-
-      {/* Our Story */}
-      <section>
-        <h2 className="text-3xl font-bold mb-6 text-accent">
-          Our Story
-        </h2>
-        <div className="text-gray-300 leading-relaxed text-lg">
-          {about.our_story}
+    <main>
+      {/* Page Header */}
+      <div style={{ backgroundColor: "#1e1e1e" }} className="py-16 md:py-20 px-6">
+        <div className="max-w-7xl mx-auto">
+          <h1
+            className="font-medium text-white"
+            style={{ fontSize: "clamp(1.75rem, 5vw, 2rem)" }}
+          >
+            {about.title}
+          </h1>
         </div>
-      </section>
+      </div>
 
-      {/* Mission + Vision */}
-      <section className="grid md:grid-cols-2 gap-8">
-        <div className="bg-[#111] p-8 rounded-2xl border border-gray-800 shadow-lg">
-          <h3 className="text-2xl font-bold mb-4 flex items-center gap-2">
-            <span className="w-2 h-8 bg-white rounded-full"></span>
-            Mission
-          </h3>
-          <p className="text-gray-400 leading-relaxed">{about.mission}</p>
-        </div>
-
-        <div className="bg-[#111] p-8 rounded-2xl border border-gray-800 shadow-lg">
-          <h3 className="text-2xl font-bold mb-4 flex items-center gap-2">
-            <span className="w-2 h-8 bg-white rounded-full"></span>
-            Vision
-          </h3>
-          <p className="text-gray-400 leading-relaxed">{about.vision}</p>
-        </div>
-      </section>
-
-      {/* Company Video */}
-      {about.company_video_url && (
+      <div className="max-w-6xl mx-auto px-6 py-16 space-y-16">
+        {/* Our Story */}
         <section>
-          <h2 className="text-3xl font-bold mb-6">
-            Company Introduction
+          <h2
+            className="text-2xl font-medium mb-5"
+            style={{ color: "#343a40" }}
+          >
+            Our Story
           </h2>
-          <div className="aspect-video w-full overflow-hidden rounded-2xl shadow-2xl">
-            <iframe
-              width="100%"
-              height="100%"
-              src={about.company_video_url.replace("watch?v=", "embed/")}
-              className="rounded-xl"
-              allowFullScreen
-              title="Company Video"
-            />
+          <p className="text-base leading-relaxed" style={{ color: "#6c757d" }}>
+            {about.our_story}
+          </p>
+        </section>
+
+        {/* Mission + Vision */}
+        <section className="grid md:grid-cols-2 gap-6">
+          <div
+            className="p-8 border border-gray-200 shadow-sm"
+            style={{ backgroundColor: "#f8f9fa" }}
+          >
+            <h3
+              className="text-lg font-medium mb-4"
+              style={{ color: "#343a40" }}
+            >
+              Mission
+            </h3>
+            <p className="text-sm leading-relaxed" style={{ color: "#6c757d" }}>
+              {about.mission}
+            </p>
+          </div>
+
+          <div
+            className="p-8 border border-gray-200 shadow-sm"
+            style={{ backgroundColor: "#f8f9fa" }}
+          >
+            <h3
+              className="text-lg font-medium mb-4"
+              style={{ color: "#343a40" }}
+            >
+              Vision
+            </h3>
+            <p className="text-sm leading-relaxed" style={{ color: "#6c757d" }}>
+              {about.vision}
+            </p>
           </div>
         </section>
-      )}
 
-      {/* Achievements */}
-      {achievements && achievements.length > 0 && (
-        <section>
-          <h2 className="text-3xl font-bold mb-10">
-            Our Achievements
-          </h2>
+        {/* Company Video */}
+        {about.company_video_url && (
+          <section>
+            <h2
+              className="text-2xl font-medium mb-5"
+              style={{ color: "#343a40" }}
+            >
+              Company Introduction
+            </h2>
+            <div className="aspect-video w-full overflow-hidden shadow-sm border border-gray-200">
+              <iframe
+                width="100%"
+                height="100%"
+                src={about.company_video_url.replace("watch?v=", "embed/")}
+                className="border-0"
+                allowFullScreen
+                title="Company Video"
+              />
+            </div>
+          </section>
+        )}
 
-          <div className="grid md:grid-cols-3 gap-8">
-            {achievements.map((item: any) => (
-              <div
-                key={item.uid}
-                className="bg-[#111] p-8 rounded-2xl border border-gray-800 shadow-lg hover:border-gray-600 transition"
-              >
-                <div className="text-accent text-lg font-bold mb-2">
-                  {item.year}
+        {/* Achievements */}
+        {achievements && achievements.length > 0 && (
+          <section>
+            <h2
+              className="text-2xl font-medium mb-8"
+              style={{ color: "#343a40" }}
+            >
+              Our Achievements
+            </h2>
+
+            <div className="grid md:grid-cols-3 gap-6">
+              {achievements.map((item: any) => (
+                <div
+                  key={item.uid}
+                  className="bg-white p-6 border border-gray-200 shadow-sm hover:shadow-lg transition-shadow duration-300"
+                >
+                  <div
+                    className="text-xs font-bold uppercase tracking-wider mb-2"
+                    style={{ color: "#e63946" }}
+                  >
+                    {item.year}
+                  </div>
+                  <h3
+                    className="text-base font-medium mb-2"
+                    style={{ color: "#343a40" }}
+                  >
+                    {item.title}
+                  </h3>
+                  <p className="text-sm leading-relaxed" style={{ color: "#6c757d" }}>
+                    {item.description}
+                  </p>
                 </div>
-                <h3 className="text-xl font-bold mb-3">
-                  {item.title}
-                </h3>
-                <p className="text-gray-400 text-sm leading-relaxed">
-                  {item.description}
-                </p>
-              </div>
-            ))}
-          </div>
-        </section>
-      )}
+              ))}
+            </div>
+          </section>
+        )}
+      </div>
     </main>
   );
 }

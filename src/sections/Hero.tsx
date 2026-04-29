@@ -1,41 +1,72 @@
+"use client";
+
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+
 const Hero = () => {
+  const [query, setQuery] = useState("");
+  const router = useRouter();
+
+  const handleSearch = () => {
+    const q = query.trim();
+    if (q) {
+      router.push(`/search?q=${encodeURIComponent(q)}`);
+    } else {
+      router.push("/search");
+    }
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === "Enter") handleSearch();
+  };
+
   return (
-    <section className="relative h-[85vh] w-full overflow-hidden">
-      
+    <section
+      className="relative w-full flex items-center justify-center"
+      style={{ height: "100vh", marginTop: "-4rem" }}
+    >
       {/* Background Video */}
       <video
         autoPlay
         loop
         muted
         playsInline
-        className="absolute w-full h-full object-cover"
+        className="absolute inset-0 w-full h-full object-cover"
       >
         <source src="/hero.mp4" type="video/mp4" />
       </video>
 
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-black/60" />
+      {/* Dark Overlay */}
+      <div className="absolute inset-0 bg-black/55" />
 
-      {/* Content */}
-      <div className="relative z-10 flex flex-col items-center justify-center h-full text-white text-center px-4 space-y-8">
-        <h1 className="text-5xl md:text-7xl font-bold max-w-4xl leading-[1.1] tracking-tight">
-          Find Your Dream <span className="text-gray-300">Luxury</span> Home
+      {/* Content — centered */}
+      <div className="relative z-10 flex flex-col items-center justify-center px-6 text-center max-w-4xl mx-auto">
+        {/* H1 Headline */}
+        <h1
+          className="text-white font-medium mb-8 leading-tight"
+          style={{ fontSize: "clamp(1.75rem, 5vw, 2rem)" }}
+        >
+          Easiest way to find your dream home
         </h1>
-        <p className="text-lg md:text-2xl text-gray-300 max-w-2xl font-light">
-          Experience the pinnacle of refined living with our curated collection of world-class estates.
-        </p>
 
-        <div className="flex flex-col sm:flex-row gap-4 pt-4">
-          <a href="/search">
-            <button className="bg-white text-black px-10 py-5 rounded-2xl font-bold text-lg hover:scale-105 hover:bg-gray-100 transition-all duration-300 shadow-2xl w-full sm:w-auto">
-              Explore Properties
-            </button>
-          </a>
-          <a href="/agents">
-            <button className="bg-transparent border-2 border-white/30 backdrop-blur-md text-white px-10 py-5 rounded-2xl font-bold text-lg hover:bg-white/10 transition-all duration-300 w-full sm:w-auto">
-              Meet Agents
-            </button>
-          </a>
+        {/* Search Bar */}
+        <div className="flex w-full max-w-xl">
+          <input
+            type="text"
+            placeholder="Search for a property..."
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            onKeyDown={handleKeyDown}
+            className="flex-1 px-5 py-3 text-sm outline-none border-0"
+            style={{ backgroundColor: "#ffffff", color: "#343a40" }}
+          />
+          <button
+            onClick={handleSearch}
+            className="px-6 py-3 text-sm font-medium text-white transition-colors duration-200 cursor-pointer"
+            style={{ backgroundColor: "#e63946" }}
+          >
+            Search
+          </button>
         </div>
       </div>
     </section>

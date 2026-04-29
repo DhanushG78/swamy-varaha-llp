@@ -6,47 +6,139 @@ const Footer = async () => {
   if (!settings) return null;
 
   return (
-    <footer className="bg-black text-white px-8 py-16 mt-20 border-t border-gray-900">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
-        {/* Company Info */}
-        <div className="space-y-4">
-          <h2 className="text-xl font-bold mb-4 tracking-tight">Company</h2>
-          <p className="text-gray-400 font-medium">{settings.company_name}</p>
-          <p className="text-gray-500 leading-relaxed">{settings.footer_address || settings.address}</p>
-        </div>
+    <footer style={{ backgroundColor: "#111111" }}>
+      <div className="max-w-7xl mx-auto px-6 py-16">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+          {/* Contact Column */}
+          <div>
+            <h3
+              className="text-sm font-bold text-white uppercase tracking-wider mb-5 inline-block px-3 py-1"
+              style={{ backgroundColor: "#343a40" }}
+            >
+              Contact
+            </h3>
+            <div className="mt-4 space-y-2">
+              <p className="text-sm text-gray-400">
+                {settings.footer_address || settings.address}
+              </p>
+              {settings.phone && (
+                <p className="text-sm text-gray-400">{settings.phone}</p>
+              )}
+              {settings.email && (
+                <p className="text-sm text-gray-400">
+                  <a
+                    href={`mailto:${settings.email}`}
+                    className="hover:text-white transition-colors duration-200"
+                  >
+                    {settings.email}
+                  </a>
+                </p>
+              )}
+            </div>
+          </div>
 
-        {/* Contact Info */}
-        <div className="space-y-4">
-          <h2 className="text-xl font-bold mb-4 tracking-tight">Contact</h2>
-          <p className="text-gray-400">Email: <span className="text-gray-300">{settings.email}</span></p>
-          <p className="text-gray-400">Phone: <span className="text-gray-300">{settings.phone}</span></p>
-        </div>
+          {/* Sources Column */}
+          <div>
+            <h3
+              className="text-sm font-bold text-white uppercase tracking-wider mb-5 inline-block px-3 py-1"
+              style={{ backgroundColor: "#343a40" }}
+            >
+              Sources
+            </h3>
+            <ul className="mt-4 space-y-2">
+              <li>
+                <a href="/about" className="text-sm text-gray-400 hover:text-white transition-colors duration-200">
+                  About us
+                </a>
+              </li>
+              <li>
+                <a href="/properties" className="text-sm text-gray-400 hover:text-white transition-colors duration-200">
+                  Services
+                </a>
+              </li>
+              <li>
+                <a href="/about" className="text-sm text-gray-400 hover:text-white transition-colors duration-200">
+                  Vision
+                </a>
+              </li>
+              <li>
+                <a href="/about" className="text-sm text-gray-400 hover:text-white transition-colors duration-200">
+                  Mission
+                </a>
+              </li>
+              <li>
+                <a href="#" className="text-sm text-gray-400 hover:text-white transition-colors duration-200">
+                  Terms
+                </a>
+              </li>
+              <li>
+                <a href="#" className="text-sm text-gray-400 hover:text-white transition-colors duration-200">
+                  Privacy
+                </a>
+              </li>
+            </ul>
+          </div>
 
-        {/* Quick Links */}
-        <div className="space-y-4">
-          <h2 className="text-xl font-bold mb-4 tracking-tight">Quick Links</h2>
-          <ul className="space-y-3 text-gray-400">
-            <li><a href="/properties" className="hover:text-white transition">Properties</a></li>
-            <li><a href="/agents" className="hover:text-white transition">Agents</a></li>
-            <li><a href="/about" className="hover:text-white transition">About Us</a></li>
-          </ul>
-        </div>
-
-        {/* Social Links */}
-        <div className="space-y-4">
-          <h2 className="text-xl font-bold mb-4 tracking-tight">Social</h2>
-          <ul className="space-y-3 text-gray-400">
-            {settings.instagram_link && (
-              <li><a href={settings.instagram_link} className="hover:text-white transition">Instagram</a></li>
-            )}
-            {settings.linkedin_link && (
-              <li><a href={settings.linkedin_link} className="hover:text-white transition">LinkedIn</a></li>
-            )}
-          </ul>
+          {/* Links Column */}
+          <div>
+            <h3
+              className="text-sm font-bold text-white uppercase tracking-wider mb-5 inline-block px-3 py-1"
+              style={{ backgroundColor: "#343a40" }}
+            >
+              Links
+            </h3>
+            <ul className="mt-4 space-y-2">
+              <li>
+                <a href="/about" className="text-sm text-gray-400 hover:text-white transition-colors duration-200">
+                  Our Vision
+                </a>
+              </li>
+              <li>
+                <a href="/about" className="text-sm text-gray-400 hover:text-white transition-colors duration-200">
+                  About us
+                </a>
+              </li>
+              <li>
+                <a href="/agents" className="text-sm text-gray-400 hover:text-white transition-colors duration-200">
+                  Contact us
+                </a>
+              </li>
+              {settings.instagram_link && (
+                <li>
+                  <a
+                    href={settings.instagram_link}
+                    className="text-sm text-gray-400 hover:text-white transition-colors duration-200"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Instagram
+                  </a>
+                </li>
+              )}
+              {settings.linkedin_link && (
+                <li>
+                  <a
+                    href={settings.linkedin_link}
+                    className="text-sm text-gray-400 hover:text-white transition-colors duration-200"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    LinkedIn
+                  </a>
+                </li>
+              )}
+            </ul>
+          </div>
         </div>
       </div>
-      <div className="max-w-7xl mx-auto mt-16 pt-8 border-t border-gray-900 text-center text-gray-600 text-sm">
-        &copy; {new Date().getFullYear()} {settings.company_name}. All rights reserved.
+
+      {/* Copyright */}
+      <div className="border-t border-gray-800">
+        <div className="max-w-7xl mx-auto px-6 py-5">
+          <p className="text-xs text-gray-500 text-center">
+            &copy; {new Date().getFullYear()} {settings.company_name || "Swamy Varaha LLP"}. All rights reserved.
+          </p>
+        </div>
       </div>
     </footer>
   );
