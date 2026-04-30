@@ -7,6 +7,8 @@ import AgentRecruitBanner from "@/sections/AgentRecruitBanner";
 import HomeAgents from "@/sections/HomeAgents";
 import { getGlobalSettings } from "@/lib/api";
 
+export const dynamic = "force-dynamic";
+
 export default async function Home() {
   const settings = await getGlobalSettings();
   const heroVideoUrl: string | undefined = settings?.hero_video_url || undefined;

@@ -2,6 +2,8 @@ import { getAllProperties } from "@/lib/api";
 import SearchFilter from "@/components/SearchFilter";
 import { Suspense } from "react";
 
+export const dynamic = "force-dynamic";
+
 interface Property {
   uid: string;
   title: string;
