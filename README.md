@@ -1,36 +1,69 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Real Estate Platform
 
-## Getting Started
+## Project Overview
 
-First, run the development server:
+A modern, premium luxury real estate platform built with Next.js and Contentstack. This platform features a high-end UI design with a dark charcoal aesthetic, smooth property detail carousels, and dynamic content integration. It serves as a comprehensive property listing site that elegantly presents homes, categories, and real estate agents.
+
+## Features
+
+- **Dynamic Content Management:** Seamlessly fetches properties, categories, and agent data from Contentstack Headless CMS.
+- **Premium Luxury UI:** Sophisticated design system utilizing dark charcoal navbars, accent red CTAs, and alternating light-gray/white sections.
+- **Interactive Property Carousels:** Smooth image sliders for property details using Embla Carousel.
+- **Localized Filtering:** Price ranges and financial formatting localized to Indian Rupees (INR).
+- **Responsive Layout:** Fully responsive, mobile-first design powered by Tailwind CSS v4.
+- **Modern Architecture:** Utilizes Next.js App Router for optimal performance, server-side rendering, and dynamic routing.
+
+## Tech Stack
+
+- **Framework:** [Next.js](https://nextjs.org/) (v16 App Router)
+- **Library:** [React](https://react.dev/) (v19)
+- **Styling:** [Tailwind CSS](https://tailwindcss.com/) (v4)
+- **Language:** TypeScript
+- **Carousels/Animations:** Embla Carousel React
+
+## CMS Used
+
+- **[Contentstack](https://www.contentstack.com/):** A headless CMS used to manage and deliver content (Properties, Categories, Agents, Media) across the platform.
+
+## Deployment Link
+
+https://swamy-varaha-llp.contentstackapps.com/
+
+
+## How to Run Locally
+
+Follow these steps to set up the project locally:
+
+### 1. Clone the Repository
+
+```bash
+git clone <your-repo-url>
+cd real-estate-platform
+```
+
+### 2. Install Dependencies
+
+```bash
+npm install
+```
+
+### 3. Set Up Environment Variables
+
+Create a `.env.local` file in the root of the project and add your Contentstack credentials:
+
+```env
+CONTENTSTACK_API_KEY=your_api_key
+CONTENTSTACK_DELIVERY_TOKEN=your_delivery_token
+CONTENTSTACK_ENVIRONMENT=your_environment
+CONTENTSTACK_REGION=your_region
+```
+
+### 4. Run the Development Server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 5. View the App
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Open [http://localhost:3000](http://localhost:3000) in your browser to see the result.
