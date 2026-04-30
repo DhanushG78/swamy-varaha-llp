@@ -1,9 +1,9 @@
 import Contentstack from "contentstack";
 
 const Stack = Contentstack.Stack({
-  api_key: process.env.NEXT_PUBLIC_CONTENTSTACK_API_KEY!,
-  delivery_token: process.env.NEXT_PUBLIC_CONTENTSTACK_DELIVERY_TOKEN!,
-  environment: process.env.NEXT_PUBLIC_CONTENTSTACK_ENVIRONMENT!,
+  api_key: process.env.CONTENTSTACK_API_KEY || process.env.NEXT_PUBLIC_CONTENTSTACK_API_KEY || "",
+  delivery_token: process.env.CONTENTSTACK_DELIVERY_TOKEN || process.env.NEXT_PUBLIC_CONTENTSTACK_DELIVERY_TOKEN || "",
+  environment: process.env.CONTENTSTACK_ENVIRONMENT || process.env.NEXT_PUBLIC_CONTENTSTACK_ENVIRONMENT || "",
 });
 
 export const getFeaturedProperties = async () => {
