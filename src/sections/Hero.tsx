@@ -3,16 +3,16 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
-const Hero = () => {
+const Hero = ({ videoUrl }: { videoUrl?: string }) => {
   const [query, setQuery] = useState("");
   const router = useRouter();
 
   const handleSearch = () => {
     const q = query.trim();
     if (q) {
-      router.push(`/search?q=${encodeURIComponent(q)}`);
+      router.push(`/properties?q=${encodeURIComponent(q)}`);
     } else {
-      router.push("/search");
+      router.push("/properties");
     }
   };
 
@@ -32,8 +32,9 @@ const Hero = () => {
         muted
         playsInline
         className="absolute inset-0 w-full h-full object-cover"
+        key={videoUrl || "/hero.mp4"}
       >
-        <source src="/hero.mp4" type="video/mp4" />
+        <source src={videoUrl || "/hero.mp4"} type="video/mp4" />
       </video>
 
       {/* Dark Overlay */}
