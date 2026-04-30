@@ -48,26 +48,26 @@ function getCategoryName(property: Property): string {
   return (property.category as { name: string }).name?.toLowerCase() || "";
 }
 
-type PriceRange = "" | "under500k" | "500k-1m" | "1m-3m" | "above3m";
+type PriceRange = "" | "under50L" | "50L-1Cr" | "1Cr-3Cr" | "above3Cr";
 
 const PRICE_RANGES: { label: string; value: PriceRange }[] = [
   { label: "All Price Ranges", value: "" },
-  { label: "Under $500K", value: "under500k" },
-  { label: "$500K - $1M", value: "500k-1m" },
-  { label: "$1M - $3M", value: "1m-3m" },
-  { label: "Above $3M", value: "above3m" },
+  { label: "Under ₹50L", value: "under50L" },
+  { label: "₹50L - ₹1Cr", value: "50L-1Cr" },
+  { label: "₹1Cr - ₹3Cr", value: "1Cr-3Cr" },
+  { label: "Above ₹3Cr", value: "above3Cr" },
 ];
 
 function matchesPriceRange(price: number, range: PriceRange): boolean {
   switch (range) {
-    case "under500k":
-      return price < 500_000;
-    case "500k-1m":
-      return price >= 500_000 && price < 1_000_000;
-    case "1m-3m":
-      return price >= 1_000_000 && price < 3_000_000;
-    case "above3m":
-      return price >= 3_000_000;
+    case "under50L":
+      return price < 50_00_000;
+    case "50L-1Cr":
+      return price >= 50_00_000 && price < 1_00_00_000;
+    case "1Cr-3Cr":
+      return price >= 1_00_00_000 && price < 3_00_00_000;
+    case "above3Cr":
+      return price >= 3_00_00_000;
     default:
       return true;
   }

@@ -45,6 +45,14 @@ export const getAllAgents = async () => {
   return result[0];
 };
 
+export const getAllCategories = async () => {
+  const Query = Stack.ContentType("category").Query();
+
+  const result = await Query.toJSON().find();
+
+  return result[0];
+};
+
 export const getAboutPage = async () => {
   const Query = Stack.ContentType("about_page").Query();
 

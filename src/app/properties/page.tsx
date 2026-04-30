@@ -1,5 +1,6 @@
-import PropertyCard from "@/components/PropertyCard";
 import { getAllProperties } from "@/lib/api";
+import SearchFilter from "@/components/SearchFilter";
+import { Suspense } from "react";
 
 interface Property {
   uid: string;
@@ -10,6 +11,7 @@ interface Property {
   beds?: string | number;
   baths?: string | number;
   images?: { url: string }[];
+  category?: { name: string }[] | { name: string };
 }
 
 export default async function PropertiesPage() {
@@ -29,33 +31,11 @@ export default async function PropertiesPage() {
         </div>
       </div>
 
-      {/* Listings */}
-      <div className="max-w-7xl mx-auto px-6 py-16">
-        {properties.length === 0 ? (
-          <div className="text-center py-24 border border-dashed border-gray-300">
-            <h2 className="text-xl font-medium" style={{ color: "#343a40" }}>
-              No properties found
-            </h2>
-            <p className="text-sm mt-2" style={{ color: "#6c757d" }}>
-              Please check back later.
-            </p>
-          </div>
-        ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {properties.map((property) => (
-              <PropertyCard
-                key={property.uid}
-                title={property.title}
-                price={property.price}
-                location={property.location}
-                slug={property.slug}
-                beds={property.beds}
-                baths={property.baths}
-                image={property.images?.[0]?.url || "/fallback-property.jpg"}
-              />
-            ))}
-          </div>
-        )}
+      {/* Filter and Listings */}
+      <div className="max-w-7xl mx-auto px-6 py-12">
+        <Suspense fallback={<div className="text-sm" style={{ color: "#6c757d" }}>Loading properties...</div>}>
+          <SearchFilter properties={properties} />
+        </Suspense>
       </div>
     </main>
   );

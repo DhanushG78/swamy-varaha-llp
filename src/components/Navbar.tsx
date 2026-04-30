@@ -3,20 +3,20 @@
 import Link from "next/link";
 import { useState, useEffect } from "react";
 
-const navLinks = [
+const staticNavLinks = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About" },
-  { href: "/search", label: "Search" },
   { href: "/properties", label: "Properties" },
-  { href: "/agents", label: "Agents" },
-  { href: "/buy", label: "Buy" },
-  { href: "/rent", label: "Rent" },
-  { href: "/sell", label: "Sell" },
 ];
 
-const Navbar = () => {
+const endNavLinks = [
+  { href: "/agents", label: "Agents" },
+];
+
+const Navbar = ({ categories = [] }: { categories?: any[] }) => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [categoriesOpen, setCategoriesOpen] = useState(false);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -45,7 +45,62 @@ const Navbar = () => {
 
           {/* Desktop Nav */}
           <div className="hidden lg:flex items-center gap-1">
-            {navLinks.map((link) => (
+            {staticNavLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="px-3 py-2 text-sm text-gray-300 hover:text-white transition-colors duration-200 relative group"
+              >
+                {link.label}
+                <span
+                  className="absolute bottom-0 left-3 right-3 h-[2px] scale-x-0 group-hover:scale-x-100 transition-transform duration-200 origin-left"
+                  style={{ backgroundColor: "#e63946" }}
+                />
+              </Link>
+            ))}
+
+            {/* Categories Dropdown */}
+            <div
+              className="relative"
+              onMouseEnter={() => setCategoriesOpen(true)}
+              onMouseLeave={() => setCategoriesOpen(false)}
+            >
+              <button className="px-3 py-2 text-sm text-gray-300 hover:text-white transition-colors duration-200 relative group flex items-center gap-1">
+                Categories
+                <svg
+                  className={`w-4 h-4 transition-transform duration-200 ${categoriesOpen ? "rotate-180" : ""}`}
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+                <span
+                  className="absolute bottom-0 left-3 right-3 h-[2px] scale-x-0 group-hover:scale-x-100 transition-transform duration-200 origin-left"
+                  style={{ backgroundColor: "#e63946" }}
+                />
+              </button>
+
+              {/* Dropdown Menu */}
+              <div
+                className={`absolute top-full left-0 mt-0 w-48 rounded-md shadow-lg py-1 transition-all duration-200 origin-top ${
+                  categoriesOpen ? "opacity-100 scale-y-100" : "opacity-0 scale-y-0 pointer-events-none"
+                }`}
+                style={{ backgroundColor: "#1e1e1e", border: "1px solid #333" }}
+              >
+                {categories.map((cat) => (
+                  <Link
+                    key={cat.uid}
+                    href={`/properties?category=${cat.title.toLowerCase()}`}
+                    className="block px-4 py-2 text-sm text-gray-300 hover:text-white hover:bg-white/10 transition-colors"
+                  >
+                    {cat.title}
+                  </Link>
+                ))}
+              </div>
+            </div>
+
+            {endNavLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
@@ -93,12 +148,38 @@ const Navbar = () => {
         style={{ backgroundColor: "#1e1e1e" }}
       >
         <div className="px-4 py-3 space-y-1">
-          {navLinks.map((link) => (
+          {staticNavLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
               onClick={() => setMobileOpen(false)}
-              className="block px-3 py-3 text-gray-300 hover:text-white hover:bg-white/5 transition-colors duration-200 text-sm border-b border-gray-800 last:border-0"
+              className="block px-3 py-3 text-gray-300 hover:text-white hover:bg-white/5 transition-colors duration-200 text-sm border-b border-gray-800"
+            >
+              {link.label}
+            </Link>
+          ))}
+          
+          {/* Mobile Categories */}
+          <div className="block px-3 py-2 text-gray-400 text-xs font-semibold uppercase tracking-wider border-b border-gray-800 mt-2">
+            Categories
+          </div>
+          {categories.map((cat) => (
+            <Link
+              key={cat.uid}
+              href={`/properties?category=${cat.title.toLowerCase()}`}
+              onClick={() => setMobileOpen(false)}
+              className="block px-6 py-2 text-gray-300 hover:text-white hover:bg-white/5 transition-colors duration-200 text-sm border-b border-gray-800"
+            >
+              {cat.title}
+            </Link>
+          ))}
+
+          {endNavLinks.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              onClick={() => setMobileOpen(false)}
+              className="block px-3 py-3 text-gray-300 hover:text-white hover:bg-white/5 transition-colors duration-200 text-sm border-b border-gray-800 last:border-0 mt-2"
             >
               {link.label}
             </Link>
