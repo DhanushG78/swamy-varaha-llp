@@ -7,74 +7,94 @@ const Stack = Contentstack.Stack({
 });
 
 export const getFeaturedProperties = async () => {
-  const Query = Stack.ContentType("property").Query();
-
-  Query.where("featured", true).includeReference(["category", "agent"]);
-
-  const result = await Query.toJSON().find();
-
-  return result[0];
+  try {
+    const Query = Stack.ContentType("property").Query();
+    Query.where("featured", true).includeReference(["category", "agent"]);
+    const result = await Query.toJSON().find();
+    return result[0] ?? [];
+  } catch (err) {
+    console.error("[CMS] getFeaturedProperties failed:", err);
+    return [];
+  }
 };
 
 export const getPropertyBySlug = async (slug: string) => {
-  const Query = Stack.ContentType("property").Query();
-
-  Query.where("slug", slug)
-    .includeReference(["category", "agent"]);
-
-  const result = await Query.toJSON().find();
-
-  return result[0][0];
+  try {
+    const Query = Stack.ContentType("property").Query();
+    Query.where("slug", slug).includeReference(["category", "agent"]);
+    const result = await Query.toJSON().find();
+    return result[0]?.[0] ?? null;
+  } catch (err) {
+    console.error("[CMS] getPropertyBySlug failed:", err);
+    return null;
+  }
 };
 
 export const getAllProperties = async () => {
-  const Query = Stack.ContentType("property").Query();
-
-  Query.includeReference(["category", "agent"]);
-
-  const result = await Query.toJSON().find();
-
-  return result[0];
+  try {
+    const Query = Stack.ContentType("property").Query();
+    Query.includeReference(["category", "agent"]);
+    const result = await Query.toJSON().find();
+    return result[0] ?? [];
+  } catch (err) {
+    console.error("[CMS] getAllProperties failed:", err);
+    return [];
+  }
 };
 
 export const getAllAgents = async () => {
-  const Query = Stack.ContentType("agent").Query();
-
-  const result = await Query.toJSON().find();
-
-  return result[0];
+  try {
+    const Query = Stack.ContentType("agent").Query();
+    const result = await Query.toJSON().find();
+    return result[0] ?? [];
+  } catch (err) {
+    console.error("[CMS] getAllAgents failed:", err);
+    return [];
+  }
 };
 
 export const getAllCategories = async () => {
-  const Query = Stack.ContentType("category").Query();
-
-  const result = await Query.toJSON().find();
-
-  return result[0];
+  try {
+    const Query = Stack.ContentType("category").Query();
+    const result = await Query.toJSON().find();
+    return result[0] ?? [];
+  } catch (err) {
+    console.error("[CMS] getAllCategories failed:", err);
+    return [];
+  }
 };
 
 export const getAboutPage = async () => {
-  const Query = Stack.ContentType("about_page").Query();
-
-  const result = await Query.toJSON().find();
-
-  return result[0][0];
+  try {
+    const Query = Stack.ContentType("about_page").Query();
+    const result = await Query.toJSON().find();
+    return result[0]?.[0] ?? null;
+  } catch (err) {
+    console.error("[CMS] getAboutPage failed:", err);
+    return null;
+  }
 };
 
 export const getAchievements = async () => {
-  const Query = Stack.ContentType("achievement").Query();
-
-  const result = await Query.toJSON().find();
-
-  return result[0];
+  try {
+    const Query = Stack.ContentType("achievement").Query();
+    const result = await Query.toJSON().find();
+    return result[0] ?? [];
+  } catch (err) {
+    console.error("[CMS] getAchievements failed:", err);
+    return [];
+  }
 };
 
 export const getGlobalSettings = async () => {
-  const Query = Stack.ContentType("global_settings").Query();
-
-  const result = await Query.toJSON().find();
-
-  return result[0][0];
+  try {
+    const Query = Stack.ContentType("global_settings").Query();
+    const result = await Query.toJSON().find();
+    return result[0]?.[0] ?? null;
+  } catch (err) {
+    console.error("[CMS] getGlobalSettings failed:", err);
+    return null;
+  }
 };
 
 export default Stack;
