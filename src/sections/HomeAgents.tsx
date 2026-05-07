@@ -9,8 +9,8 @@ interface Agent {
   bio: string;
 }
 
-const HomeAgents = async () => {
-  const agents = (await getAllAgents()) as Agent[];
+const HomeAgents = async ({ searchParams }: { searchParams?: any }) => {
+  const agents = (await getAllAgents(searchParams)) as Agent[];
 
   if (!agents || agents.length === 0) return null;
 

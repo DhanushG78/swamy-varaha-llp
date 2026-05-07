@@ -13,8 +13,8 @@ type Property = {
   images?: { url: string }[];
 };
 
-const FeaturedProperties = async () => {
-  const properties = (await getFeaturedProperties()) as Property[];
+const FeaturedProperties = async ({ searchParams }: { searchParams?: any }) => {
+  const properties = (await getFeaturedProperties(searchParams)) as Property[];
 
   if (!properties || properties.length === 0) {
     return (

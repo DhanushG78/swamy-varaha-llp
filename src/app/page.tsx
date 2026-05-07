@@ -9,8 +9,9 @@ import { getGlobalSettings } from "@/lib/api";
 
 export const dynamic = "force-dynamic";
 
-export default async function Home() {
-  const settings = await getGlobalSettings();
+export default async function Home(props: { searchParams: Promise<any> }) {
+  const searchParams = await props.searchParams;
+  const settings = await getGlobalSettings(searchParams);
   const heroVideoUrl: string | undefined = settings?.hero_video_url || undefined;
 
   return (
@@ -19,7 +20,7 @@ export default async function Home() {
       <Hero videoUrl={heroVideoUrl} />
 
       {/* 2. Popular Properties — white bg */}
-      <FeaturedProperties />
+      <FeaturedProperties searchParams={searchParams} />
 
       {/* 3. Feature Categories — light gray bg */}
       <Categories />
@@ -34,7 +35,7 @@ export default async function Home() {
       <AgentRecruitBanner />
 
       {/* 7. Our Agents — white bg */}
-      <HomeAgents />
+      <HomeAgents searchParams={searchParams} />
     </main>
   );
 }

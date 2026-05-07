@@ -4,11 +4,23 @@ const Stack = Contentstack.Stack({
   api_key: process.env.CONTENTSTACK_API_KEY || process.env.NEXT_PUBLIC_CONTENTSTACK_API_KEY || "",
   delivery_token: process.env.CONTENTSTACK_DELIVERY_TOKEN || process.env.NEXT_PUBLIC_CONTENTSTACK_DELIVERY_TOKEN || "",
   environment: process.env.CONTENTSTACK_ENVIRONMENT || process.env.NEXT_PUBLIC_CONTENTSTACK_ENVIRONMENT || "",
+  live_preview: {
+    enable: process.env.NEXT_PUBLIC_LIVE_PREVIEW_ENABLED === "true",
+    preview_token: process.env.CONTENTSTACK_PREVIEW_TOKEN || "",
+    host: "rest-preview.contentstack.com"
+  }
 });
 
-export const getFeaturedProperties = async () => {
+const setPreview = (query: any, searchParams?: any) => {
+  if (searchParams?.live_preview) {
+    Stack.livePreviewQuery(searchParams);
+  }
+};
+
+export const getFeaturedProperties = async (searchParams?: any) => {
   try {
     const Query = Stack.ContentType("property").Query();
+    setPreview(Query, searchParams);
     Query.where("featured", true).includeReference(["category", "agent"]);
     const result = await Query.toJSON().find();
     return result[0] ?? [];
@@ -18,9 +30,10 @@ export const getFeaturedProperties = async () => {
   }
 };
 
-export const getPropertyBySlug = async (slug: string) => {
+export const getPropertyBySlug = async (slug: string, searchParams?: any) => {
   try {
     const Query = Stack.ContentType("property").Query();
+    setPreview(Query, searchParams);
     Query.where("slug", slug).includeReference(["category", "agent"]);
     const result = await Query.toJSON().find();
     return result[0]?.[0] ?? null;
@@ -30,9 +43,10 @@ export const getPropertyBySlug = async (slug: string) => {
   }
 };
 
-export const getAllProperties = async () => {
+export const getAllProperties = async (searchParams?: any) => {
   try {
     const Query = Stack.ContentType("property").Query();
+    setPreview(Query, searchParams);
     Query.includeReference(["category", "agent"]);
     const result = await Query.toJSON().find();
     return result[0] ?? [];
@@ -42,9 +56,10 @@ export const getAllProperties = async () => {
   }
 };
 
-export const getAllAgents = async () => {
+export const getAllAgents = async (searchParams?: any) => {
   try {
     const Query = Stack.ContentType("agent").Query();
+    setPreview(Query, searchParams);
     const result = await Query.toJSON().find();
     return result[0] ?? [];
   } catch (err) {
@@ -53,9 +68,10 @@ export const getAllAgents = async () => {
   }
 };
 
-export const getAllCategories = async () => {
+export const getAllCategories = async (searchParams?: any) => {
   try {
     const Query = Stack.ContentType("category").Query();
+    setPreview(Query, searchParams);
     const result = await Query.toJSON().find();
     return result[0] ?? [];
   } catch (err) {
@@ -64,9 +80,10 @@ export const getAllCategories = async () => {
   }
 };
 
-export const getAboutPage = async () => {
+export const getAboutPage = async (searchParams?: any) => {
   try {
     const Query = Stack.ContentType("about_page").Query();
+    setPreview(Query, searchParams);
     const result = await Query.toJSON().find();
     return result[0]?.[0] ?? null;
   } catch (err) {
@@ -75,9 +92,10 @@ export const getAboutPage = async () => {
   }
 };
 
-export const getAchievements = async () => {
+export const getAchievements = async (searchParams?: any) => {
   try {
     const Query = Stack.ContentType("achievement").Query();
+    setPreview(Query, searchParams);
     const result = await Query.toJSON().find();
     return result[0] ?? [];
   } catch (err) {
@@ -86,9 +104,10 @@ export const getAchievements = async () => {
   }
 };
 
-export const getGlobalSettings = async () => {
+export const getGlobalSettings = async (searchParams?: any) => {
   try {
     const Query = Stack.ContentType("global_settings").Query();
+    setPreview(Query, searchParams);
     const result = await Query.toJSON().find();
     return result[0]?.[0] ?? null;
   } catch (err) {

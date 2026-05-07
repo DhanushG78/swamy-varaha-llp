@@ -2,13 +2,14 @@ import { getPropertyBySlug } from "@/lib/api";
 import Link from "next/link";
 import ImageSlider from "@/components/ImageSlider";
 
-export default async function PropertyDetailPage({
-  params,
-}: {
+export default async function PropertyDetailPage(props: {
   params: Promise<{ slug: string }>;
+  searchParams: Promise<any>;
 }) {
-  const { slug } = await params;
-  const property = await getPropertyBySlug(slug);
+  const params = await props.params;
+  const searchParams = await props.searchParams;
+  const { slug } = params;
+  const property = await getPropertyBySlug(slug, searchParams);
 
   if (!property) {
     return (

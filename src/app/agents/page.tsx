@@ -11,8 +11,9 @@ interface Agent {
   bio: string;
 }
 
-export default async function AgentsPage() {
-  const agents = (await getAllAgents()) as Agent[];
+export default async function AgentsPage(props: { searchParams: Promise<any> }) {
+  const searchParams = await props.searchParams;
+  const agents = (await getAllAgents(searchParams)) as Agent[];
 
   return (
     <main>

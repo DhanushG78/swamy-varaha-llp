@@ -16,8 +16,9 @@ interface Property {
   category?: { name: string }[] | { name: string };
 }
 
-export default async function PropertiesPage() {
-  const properties = ((await getAllProperties()) as Property[]) || [];
+export default async function PropertiesPage(props: { searchParams: Promise<any> }) {
+  const searchParams = await props.searchParams;
+  const properties = ((await getAllProperties(searchParams)) as Property[]) || [];
 
   return (
     <main>
