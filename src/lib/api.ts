@@ -116,4 +116,21 @@ export const getGlobalSettings = async (searchParams?: any) => {
   }
 };
 
+export const getHomePage = async (searchParams?: any) => {
+  try {
+    const Query = Stack.ContentType("home_page").Query();
+    setPreview(Query, searchParams);
+    Query.includeReference([
+      "page_sections.categories_section.categories",
+      "page_sections.featured_properties_section.properties",
+      "page_sections.achievement_section.achievements"
+    ]);
+    const result = await Query.toJSON().find();
+    return result[0]?.[0] ?? null;
+  } catch (err) {
+    console.error("[CMS] getHomePage failed:", err);
+    return null;
+  }
+};
+
 export default Stack;

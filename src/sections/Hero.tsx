@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
-const Hero = ({ videoUrl }: { videoUrl?: string }) => {
+const Hero = ({ data }: { data: any }) => {
   const [query, setQuery] = useState("");
   const router = useRouter();
 
@@ -20,6 +20,11 @@ const Hero = ({ videoUrl }: { videoUrl?: string }) => {
     if (e.key === "Enter") handleSearch();
   };
 
+  const videoUrl = data?.background_video?.url || "/hero.mp4";
+  const heading = data?.heading || "Easiest way to find your dream home";
+  const subheading = data?.subheading || "";
+  const btnText = data?.cta_button_text || "Search";
+
   return (
     <section
       className="relative w-full flex items-center justify-center"
@@ -32,9 +37,9 @@ const Hero = ({ videoUrl }: { videoUrl?: string }) => {
         muted
         playsInline
         className="absolute inset-0 w-full h-full object-cover"
-        key={videoUrl || "/hero.mp4"}
+        key={videoUrl}
       >
-        <source src={videoUrl || "/hero.mp4"} type="video/mp4" />
+        <source src={videoUrl} type="video/mp4" />
       </video>
 
       {/* Dark Overlay */}
@@ -44,11 +49,15 @@ const Hero = ({ videoUrl }: { videoUrl?: string }) => {
       <div className="relative z-10 flex flex-col items-center justify-center px-6 text-center max-w-4xl mx-auto">
         {/* H1 Headline */}
         <h1
-          className="text-white font-medium mb-8 leading-tight"
+          className="text-white font-medium mb-4 leading-tight"
           style={{ fontSize: "clamp(1.75rem, 5vw, 2rem)" }}
         >
-          Easiest way to find your dream home
+          {heading}
         </h1>
+        
+        {subheading && (
+          <p className="text-white/80 text-lg mb-8 max-w-2xl">{subheading}</p>
+        )}
 
         {/* Search Bar */}
         <div className="flex w-full max-w-xl">
@@ -66,7 +75,7 @@ const Hero = ({ videoUrl }: { videoUrl?: string }) => {
             className="px-6 py-3 text-sm font-medium text-white transition-colors duration-200 cursor-pointer"
             style={{ backgroundColor: "#e63946" }}
           >
-            Search
+            {btnText}
           </button>
         </div>
       </div>

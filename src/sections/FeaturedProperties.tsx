@@ -1,20 +1,9 @@
 import Link from "next/link";
 import PropertyCard from "@/components/PropertyCard";
-import { getFeaturedProperties } from "@/lib/api";
 
-type Property = {
-  uid: string;
-  title: string;
-  price: string;
-  location: string;
-  slug: string;
-  beds?: string | number;
-  baths?: string | number;
-  images?: { url: string }[];
-};
-
-const FeaturedProperties = async ({ searchParams }: { searchParams?: any }) => {
-  const properties = (await getFeaturedProperties(searchParams)) as Property[];
+const FeaturedProperties = ({ data }: { data: any }) => {
+  const title = data?.section_title || "Popular Properties";
+  const properties = data?.properties || [];
 
   if (!properties || properties.length === 0) {
     return (
@@ -34,13 +23,12 @@ const FeaturedProperties = async ({ searchParams }: { searchParams?: any }) => {
   return (
     <section className="py-16 md:py-24 px-6 bg-white">
       <div className="max-w-7xl mx-auto">
-        {/* Header */}
         <div className="flex justify-between items-end mb-10">
           <h2
             className="text-2xl font-medium"
             style={{ color: "#343a40" }}
           >
-            Popular Properties
+            {title}
           </h2>
           <Link
             href="/properties"
@@ -51,9 +39,8 @@ const FeaturedProperties = async ({ searchParams }: { searchParams?: any }) => {
           </Link>
         </div>
 
-        {/* Property Grid — 3 columns on desktop */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {properties.map((property) => (
+          {properties.map((property: any) => (
             <PropertyCard
               key={property.uid}
               title={property.title}
@@ -67,7 +54,6 @@ const FeaturedProperties = async ({ searchParams }: { searchParams?: any }) => {
           ))}
         </div>
 
-        {/* Mobile link */}
         <div className="mt-8 text-center md:hidden">
           <Link
             href="/properties"
