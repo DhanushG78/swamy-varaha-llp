@@ -3,6 +3,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { getAllCategories } from "@/lib/api";
 import LivePreviewInit from "@/components/LivePreviewInit";
+import "@/lib/livePreview";
 
 export const dynamic = "force-dynamic";
 

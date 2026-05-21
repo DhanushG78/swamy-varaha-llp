@@ -2,27 +2,21 @@
 
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
-import ContentstackLivePreview from "@contentstack/live-preview-utils";
+import "@/lib/livePreview";
 
 export default function LivePreviewInit() {
   const router = useRouter();
 
   useEffect(() => {
-    ContentstackLivePreview.init({
-      enable: process.env.NEXT_PUBLIC_LIVE_PREVIEW_ENABLED === "true",
-      stackDetails: {
-        apiKey: process.env.NEXT_PUBLIC_CONTENTSTACK_API_KEY || "",
-        environment: process.env.NEXT_PUBLIC_CONTENTSTACK_ENVIRONMENT || "",
-      },
-      clientUrlParams: {
-        host: "rest-preview.contentstack.com",
-      },
-    });
-
-    ContentstackLivePreview.onEntryChange(() => {
-      // Refresh the page on content update for App Router Server Components
+    const handleUpdate = () => {
+      console.log("[LivePreviewInit] Received update event. Refreshing router data...");
       router.refresh();
-    });
+    };
+
+    window.addEventListener("contentstack-preview-update", handleUpdate);
+    return () => {
+      window.removeEventListener("contentstack-preview-update", handleUpdate);
+    };
   }, [router]);
 
   return null;

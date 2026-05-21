@@ -2,6 +2,8 @@ import { getPropertyBySlug } from "@/lib/api";
 import Link from "next/link";
 import ImageSlider from "@/components/ImageSlider";
 
+export const dynamic = "force-dynamic";
+
 export default async function PropertyDetailPage(props: {
   params: Promise<{ slug: string }>;
   searchParams: Promise<any>;
