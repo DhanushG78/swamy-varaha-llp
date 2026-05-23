@@ -14,10 +14,15 @@ export default async function handler(request, context) {
     return fetch(request);
   }
 
+  // Helper to safely get environment variables
+  const getEnv = (key) => {
+    if (context?.env?.[key]) return context.env[key];
+    if (typeof process !== 'undefined' && process.env?.[key]) return process.env[key];
+    return undefined;
+  };
+
   // STEP 1 — Read Personalize Project UID
-  const projectUid =
-    context.env?.NEXT_PUBLIC_CONTENTSTACK_PERSONALIZE_PROJECT_UID ||
-    process.env.NEXT_PUBLIC_CONTENTSTACK_PERSONALIZE_PROJECT_UID;
+  const projectUid = getEnv('NEXT_PUBLIC_CONTENTSTACK_PERSONALIZE_PROJECT_UID');
 
   if (!projectUid) {
     // If not set, log warning and bypass personalization
@@ -26,9 +31,7 @@ export default async function handler(request, context) {
   }
 
   // Set a custom edge API URL if provided
-  const edgeApiUrl =
-    context.env?.NEXT_PUBLIC_CONTENTSTACK_PERSONALIZE_EDGE_API_URL ||
-    process.env.NEXT_PUBLIC_CONTENTSTACK_PERSONALIZE_EDGE_API_URL;
+  const edgeApiUrl = getEnv('NEXT_PUBLIC_CONTENTSTACK_PERSONALIZE_EDGE_API_URL');
   if (edgeApiUrl) {
     Personalize.setEdgeApiUrl(edgeApiUrl);
   }
