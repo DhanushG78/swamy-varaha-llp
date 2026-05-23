@@ -10,8 +10,13 @@ export default async function handler(request, context) {
   const pathname = parsedUrl.pathname;
 
   // STEP 2 — Add Static Asset Exclusions & Non-GET Requests
-  // Exclude Next.js asset calls, favicon, fonts, media, and general static files
+  // Exclude Next.js asset calls, fonts, media, and general static files
   if (request.method !== 'GET' && request.method !== 'HEAD') {
+    return fetch(request);
+  }
+
+  // Bypass immediately for favicon.ico
+  if (pathname.includes('favicon.ico')) {
     return fetch(request);
   }
 
@@ -21,7 +26,6 @@ export default async function handler(request, context) {
     pathname.startsWith('/images') ||
     pathname.startsWith('/assets') ||
     pathname.startsWith('/fonts') ||
-    pathname.includes('favicon.ico') ||
     /\.(png|jpg|jpeg|gif|svg|ico|webp|css|js|woff2?|json|txt|map|mp4|mp3|wav|pdf|ttf|otf|eot)$/i.test(pathname)
   ) {
     return fetch(request);
