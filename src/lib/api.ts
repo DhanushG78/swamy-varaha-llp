@@ -182,6 +182,7 @@ export const getHomePage = async (searchParams?: any) => {
       const aliases = getVariantAliasesFromParam(params.personalize_variants);
       console.log("[CMS] Found personalize_variants query param. Decoded aliases:", aliases);
       if (aliases && aliases.length > 0) {
+        console.log("Variant aliases:", aliases);
         Query.variants(aliases);
         console.log("[CMS] Applied Query.variants(aliases) on Query");
       }

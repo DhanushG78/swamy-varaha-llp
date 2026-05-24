@@ -16,7 +16,9 @@ export default function PersonalizeDebugPanel({ heroHeading }: { heroHeading: st
         if (sdk) {
           setSdkActive(true);
           if (typeof sdk.getVariants === "function") {
-            setVariants(sdk.getVariants());
+            const v = sdk.getVariants();
+            console.log("[PersonalizeDebugPanel] sdk.getVariants() returned:", v);
+            setVariants(v);
           }
           if (typeof sdk.getExperiences === "function") {
             setExperiences(sdk.getExperiences());
