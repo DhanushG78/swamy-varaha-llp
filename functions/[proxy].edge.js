@@ -61,6 +61,10 @@ export default async function handler(request, context) {
     // Get the variant parameter from the SDK
     const variantParam = personalizeSdk.getVariantParam();
     
+    console.log(`[EdgeProxyDebug] Request pathname: ${pathname}`);
+    console.log(`[EdgeProxyDebug] Has personalize_variants query param: ${parsedUrl.searchParams.has('personalize_variants')}`);
+    console.log(`[EdgeProxyDebug] Generated variantParam: ${variantParam}`);
+    
     // Set the variant parameter as a query param in the URL
     parsedUrl.searchParams.set(personalizeSdk.VARIANT_QUERY_PARAM || 'personalize_variants', variantParam);
 

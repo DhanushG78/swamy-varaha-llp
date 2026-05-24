@@ -7,44 +7,48 @@ export default function PersonalizeInitializer() {
   useEffect(() => {
     const initializeVisitor = async () => {
       try {
+        console.log("[PersonalizeDebug] Initializing visitor classification...");
         const sdk = await getPersonalizeSdk();
         if (!sdk) {
-          console.warn("[PersonalizeInitializer] SDK is not initialized.");
+          console.warn("[PersonalizeDebug] SDK is not initialized.");
           return;
         }
 
-        const hasVisited = localStorage.getItem("hasVisited");
-        const justClassifiedNew = sessionStorage.getItem("just_classified_new");
-        const activeType = localStorage.getItem("active_visitor_type");
+        const visitorType = "returning";
+        const debugActiveType = localStorage.getItem("debug_active_visitor_type");
 
-        if (!hasVisited) {
-          // First-time visitor classification
-          console.log("[PersonalizeInitializer] Classifying as first-time visitor.");
-          await sdk.set({ visitor_type: "new" });
-          localStorage.setItem("hasVisited", "true");
-          localStorage.setItem("active_visitor_type", "new");
-          sessionStorage.setItem("just_classified_new", "true");
+        console.log("[PersonalizeDebug] Forced visitor type:", visitorType);
+        console.log("[PersonalizeDebug] Last active visitor type from localStorage:", debugActiveType);
+
+        if (debugActiveType !== visitorType) {
+          console.log(`[PersonalizeDebug] Active type mismatch (${debugActiveType} !== ${visitorType}). Calling sdk.set()...`);
+          await sdk.set({ visitor_type: visitorType });
+          console.log("[PersonalizeDebug] sdk.set() call complete.");
+          localStorage.setItem("debug_active_visitor_type", visitorType);
+          console.log("[PersonalizeDebug] Triggering reload to apply forced visitor type at edge...");
           window.location.reload();
-        } else if (justClassifiedNew === "true") {
-          // We just reloaded to apply "new" classification. Keep state but do not reload again.
-          console.log("[PersonalizeInitializer] First-time classification reload complete.");
-          sessionStorage.removeItem("just_classified_new");
-          await sdk.set({ visitor_type: "new" });
         } else {
-          // Returning visitor classification
-          if (activeType !== "returning") {
-            console.log("[PersonalizeInitializer] Classifying as returning visitor (transition).");
-            await sdk.set({ visitor_type: "returning" });
-            localStorage.setItem("active_visitor_type", "returning");
-            window.location.reload();
-          } else {
-            // Already returning, just set attribute in SDK to maintain it
-            console.log("[PersonalizeInitializer] Active visitor remains returning.");
-            await sdk.set({ visitor_type: "returning" });
-          }
+          console.log("[PersonalizeDebug] Active type already matches forced type. Maintaining state.");
+          console.log("[PersonalizeDebug] Calling sdk.set()...");
+          await sdk.set({ visitor_type: visitorType });
+          console.log("[PersonalizeDebug] sdk.set() call complete.");
         }
+
+        // Diagnostics
+        if (typeof sdk.getVariants === "function") {
+          console.log("[PersonalizeDebug] sdk.getVariants():", sdk.getVariants());
+        } else {
+          console.log("[PersonalizeDebug] sdk.getVariants is not a function.");
+        }
+
+        if (typeof sdk.getExperiences === "function") {
+          console.log("[PersonalizeDebug] sdk.getExperiences():", sdk.getExperiences());
+        } else {
+          console.log("[PersonalizeDebug] sdk.getExperiences is not a function.");
+        }
+
       } catch (error) {
-        console.error("[PersonalizeInitializer] Failed to classify visitor:", error);
+        console.error("[PersonalizeDebug] Failed to classify visitor:", error);
       }
     };
 

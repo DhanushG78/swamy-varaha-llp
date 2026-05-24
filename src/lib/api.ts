@@ -1,5 +1,6 @@
 import Contentstack from "contentstack";
 import { headers } from "next/headers";
+import { getVariantAliasesFromParam } from "@/lib/personalize";
 
 const getSearchParamsFromHeaders = async (): Promise<any> => {
   try {
@@ -162,15 +163,43 @@ export const getGlobalSettings = async (searchParams?: any) => {
 export const getHomePage = async (searchParams?: any) => {
   try {
     console.log("[CMS] getHomePage called");
-    const stack = await getStack(searchParams);
+    let params = searchParams;
+    if (!params) {
+      params = await getSearchParamsFromHeaders();
+    }
+    console.log("[CMS] getHomePage extracted search params:", params);
+
+    const stack = await getStack(params);
     const Query = stack.ContentType("home_page").Query();
     Query.includeReference([
       "page_sections.categories_section.categories",
       "page_sections.featured_properties_section.properties",
       "page_sections.achievement_section.achievements"
     ]);
+
+    // Apply variants if query parameter exists
+    if (params?.personalize_variants) {
+      const aliases = getVariantAliasesFromParam(params.personalize_variants);
+      console.log("[CMS] Found personalize_variants query param. Decoded aliases:", aliases);
+      if (aliases && aliases.length > 0) {
+        Query.variants(aliases);
+        console.log("[CMS] Applied Query.variants(aliases) on Query");
+      }
+    } else {
+      console.log("[CMS] No personalize_variants query param found in params.");
+    }
+
     const result = await Query.toJSON().find();
-    console.log("[CMS] getHomePage found:", result[0]?.[0] ? "yes" : "no");
+    console.log("[CMS] getHomePage found entry:", result[0]?.[0] ? "yes" : "no");
+    if (result[0]?.[0]) {
+      const entry = result[0][0];
+      console.log("[CMS] Returned entry title:", entry.title);
+      console.log("[CMS] Returned entry publish details variants:", entry.publish_details?.variants);
+      const heroSec = entry.page_sections?.find((s: any) => s.hero_section);
+      if (heroSec) {
+        console.log("[CMS] Hero section heading in CDA response:", heroSec.hero_section?.heading);
+      }
+    }
     return result[0]?.[0] ?? null;
   } catch (err) {
     console.error("[CMS] getHomePage failed:", err);
