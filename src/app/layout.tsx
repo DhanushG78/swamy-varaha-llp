@@ -4,6 +4,7 @@ import Footer from "@/components/Footer";
 import { getAllCategories } from "@/lib/api";
 import LivePreviewInit from "@/components/LivePreviewInit";
 import "@/lib/livePreview";
+import PersonalizeInitializer from "@/components/personalize/PersonalizeInitializer";
 
 export const dynamic = "force-dynamic";
 
@@ -24,6 +25,7 @@ export default async function RootLayout({
     <html lang="en">
       <body className="min-h-screen flex flex-col">
         <LivePreviewInit />
+        <PersonalizeInitializer />
         <Navbar categories={categories} />
         {/* pt-16 offsets the fixed navbar height */}
         <div className="flex-1 pt-16">{children}</div>
