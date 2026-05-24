@@ -39,7 +39,7 @@ export default async function handler(request, context) {
   };
 
   // STEP 1 — Read Personalize Project UID
-  const projectUid = getEnv('NEXT_PUBLIC_CONTENTSTACK_PERSONALIZE_PROJECT_UID');
+  const projectUid = getEnv('NEXT_PUBLIC_CONTENTSTACK_PERSONALIZE_PROJECT_UID') || '69faed8e2e9d553897812d69';
 
   if (!projectUid) {
     console.warn('NEXT_PUBLIC_CONTENTSTACK_PERSONALIZE_PROJECT_UID is not defined.');

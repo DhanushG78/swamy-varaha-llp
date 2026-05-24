@@ -1,6 +1,6 @@
 import Personalize from '@contentstack/personalize-edge-sdk';
 
-export const PROJECT_UID = process.env.NEXT_PUBLIC_CONTENTSTACK_PERSONALIZE_PROJECT_UID || '';
+export const PROJECT_UID = process.env.NEXT_PUBLIC_CONTENTSTACK_PERSONALIZE_PROJECT_UID || '69faed8e2e9d553897812d69';
 export const EDGE_API_URL = process.env.NEXT_PUBLIC_CONTENTSTACK_PERSONALIZE_EDGE_API_URL || '';
 
 let sdkInstance: any = null;
