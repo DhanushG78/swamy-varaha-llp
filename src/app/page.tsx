@@ -8,6 +8,7 @@ import { getHomePage } from "@/lib/api";
 import PersonalizeDebugPanel from "@/components/personalize/PersonalizeDebugPanel";
 
 export const dynamic = "force-dynamic";
+export const revalidate = 0;
 
 export default async function Home(props: { searchParams: Promise<any> }) {
   const searchParams = await props.searchParams;
@@ -23,6 +24,9 @@ export default async function Home(props: { searchParams: Promise<any> }) {
         if (section.hero_section) {
           return (
             <div key={`hero-container-${index}`}>
+              <div style={{ background: "yellow", color: "black", padding: "10px", margin: "10px 0", textAlign: "center", fontWeight: "bold", zIndex: 9999, position: "relative" }}>
+                RAW HERO HEADING: {section.hero_section.heading}
+              </div>
               <Hero data={section.hero_section} />
               <PersonalizeDebugPanel heroHeading={section.hero_section.heading} />
             </div>
