@@ -5,7 +5,6 @@ import ValueProposition from "@/sections/ValueProposition";
 import CTABanner from "@/sections/CTABanner";
 import AchievementSection from "@/sections/AchievementSection";
 import { getHomePage } from "@/lib/api";
-import PersonalizeDebugPanel from "@/components/personalize/PersonalizeDebugPanel";
 
 export const dynamic = "force-dynamic";
 export const revalidate = 0;
@@ -22,15 +21,7 @@ export default async function Home(props: { searchParams: Promise<any> }) {
     <main>
       {homePage.page_sections.map((section: any, index: number) => {
         if (section.hero_section) {
-          return (
-            <div key={`hero-container-${index}`}>
-              <div style={{ background: "yellow", color: "black", padding: "10px", margin: "10px 0", textAlign: "center", fontWeight: "bold", zIndex: 9999, position: "relative" }}>
-                RAW HERO HEADING: {section.hero_section.heading}
-              </div>
-              <Hero data={section.hero_section} />
-              <PersonalizeDebugPanel heroHeading={section.hero_section.heading} />
-            </div>
-          );
+          return <Hero key={`hero-${index}`} data={section.hero_section} />;
         }
         if (section.categories_section) {
           return <Categories key={`cat-${index}`} data={section.categories_section} />;
