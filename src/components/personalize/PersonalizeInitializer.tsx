@@ -90,13 +90,13 @@ export default function PersonalizeInitializer() {
 
         // Diagnostics
         if (typeof sdk.getVariants === "function") {
-          console.log("[PersonalizeDebug] sdk.getVariants():", sdk.getVariants());
+          console.log("[PersonalizeDebug] sdk.getVariants():", JSON.stringify(sdk.getVariants()));
         } else {
           console.log("[PersonalizeDebug] sdk.getVariants is not a function.");
         }
 
         if (typeof sdk.getExperiences === "function") {
-          console.log("[PersonalizeDebug] sdk.getExperiences():", sdk.getExperiences());
+          console.log("[PersonalizeDebug] sdk.getExperiences():", JSON.stringify(sdk.getExperiences()));
         } else {
           console.log("[PersonalizeDebug] sdk.getExperiences is not a function.");
         }
