@@ -1,9 +1,12 @@
 "use client";
 
 import { useEffect } from "react";
+import { usePathname } from "next/navigation";
 import { getPersonalizeSdk } from "@/lib/personalize";
 
 export default function PersonalizeInitializer() {
+  const pathname = usePathname();
+
   useEffect(() => {
     const initializeVisitor = async () => {
       try {
@@ -32,7 +35,7 @@ export default function PersonalizeInitializer() {
 
         // 2. Behavioral Interest Detection Logic (Step 2 & 3)
         let detectedInterest: "beachfront" | "villa" | "ultraluxury" | null = null;
-        const path = window.location.pathname.toLowerCase();
+        const path = pathname.toLowerCase();
         if (path.includes("beachfront")) {
           detectedInterest = "beachfront";
         } else if (path.includes("villa")) {
@@ -42,34 +45,41 @@ export default function PersonalizeInitializer() {
         }
 
         const storedInterest = localStorage.getItem("property_interest");
+        const sessionSynced = sessionStorage.getItem("personalize_session_synced") === "true";
 
         console.log("[PersonalizeDebug] Evaluated visitor type:", visitorType);
         console.log("[PersonalizeDebug] Last active visitor type from localStorage:", debugActiveType);
         console.log("[PersonalizeDebug] Evaluated property interest:", detectedInterest);
         console.log("[PersonalizeDebug] Last active property interest from localStorage:", storedInterest);
+        console.log("[PersonalizeDebug] Is session synchronized:", sessionSynced);
 
         const visitorTypeChanged = debugActiveType !== visitorType;
         const interestChanged = detectedInterest !== null && detectedInterest !== storedInterest;
 
         // 3. Update Personalize SDK & Persist (Step 4, 5, 6, 7)
-        if (visitorTypeChanged || interestChanged) {
+        if (!sessionSynced || visitorTypeChanged || interestChanged) {
           const updatePayload: Record<string, string> = {};
-          if (visitorTypeChanged) {
-            updatePayload.visitor_type = visitorType;
-          }
-          if (interestChanged && detectedInterest) {
-            updatePayload.property_interest = detectedInterest;
+          
+          // If we have a newly detected interest, use it.
+          // Otherwise, if we are performing the initial session sync, fallback to the stored interest.
+          const finalInterest = detectedInterest || (!sessionSynced ? storedInterest : null);
+
+          updatePayload.visitor_type = visitorType;
+          if (finalInterest) {
+            updatePayload.property_interest = finalInterest;
           }
 
-          console.log(`[PersonalizeDebug] Mismatch detected. Calling sdk.set() with:`, updatePayload);
+          console.log(
+            `[PersonalizeDebug] Sync needed (sessionSynced: ${sessionSynced}, typeChanged: ${visitorTypeChanged}, interestChanged: ${interestChanged}). calling sdk.set() with:`,
+            updatePayload
+          );
           await sdk.set(updatePayload);
           console.log("[PersonalizeDebug] sdk.set() call complete.");
 
-          if (visitorTypeChanged) {
-            localStorage.setItem("debug_active_visitor_type", visitorType);
-          }
-          if (interestChanged && detectedInterest) {
-            localStorage.setItem("property_interest", detectedInterest);
+          sessionStorage.setItem("personalize_session_synced", "true");
+          localStorage.setItem("debug_active_visitor_type", visitorType);
+          if (finalInterest) {
+            localStorage.setItem("property_interest", finalInterest);
           }
 
           console.log("[PersonalizeDebug] Triggering reload to apply updated state...");
@@ -97,7 +107,7 @@ export default function PersonalizeInitializer() {
     };
 
     initializeVisitor();
-  }, []);
+  }, [pathname]);
 
   return null;
 }
