@@ -45,47 +45,40 @@ export default function PersonalizeInitializer() {
         }
 
         const storedInterest = localStorage.getItem("property_interest");
-        const sessionSynced = sessionStorage.getItem("personalize_session_synced") === "true";
 
         console.log("[PersonalizeDebug] Evaluated visitor type:", visitorType);
         console.log("[PersonalizeDebug] Last active visitor type from localStorage:", debugActiveType);
         console.log("[PersonalizeDebug] Evaluated property interest:", detectedInterest);
         console.log("[PersonalizeDebug] Last active property interest from localStorage:", storedInterest);
-        console.log("[PersonalizeDebug] Is session synchronized:", sessionSynced);
 
+        // Always sync current attributes to the SDK to guarantee consistency
+        const updatePayload: Record<string, string> = {
+          visitor_type: visitorType
+        };
+        const finalInterest = detectedInterest || storedInterest;
+        if (finalInterest) {
+          updatePayload.property_interest = finalInterest;
+        }
+
+        console.log("[PersonalizeDebug] Synchronizing SDK attributes:", JSON.stringify(updatePayload));
+        await sdk.set(updatePayload);
+        console.log("[PersonalizeDebug] sdk.set() call complete.");
+
+        // Reload only if the values have actually changed in localStorage
         const visitorTypeChanged = debugActiveType !== visitorType;
         const interestChanged = detectedInterest !== null && detectedInterest !== storedInterest;
 
-        // 3. Update Personalize SDK & Persist (Step 4, 5, 6, 7)
-        if (!sessionSynced || visitorTypeChanged || interestChanged) {
-          const updatePayload: Record<string, string> = {};
+        if (visitorTypeChanged || interestChanged) {
+          console.log(`[PersonalizeDebug] State change detected (typeChanged: ${visitorTypeChanged}, interestChanged: ${interestChanged}). Triggering reload...`);
           
-          // If we have a newly detected interest, use it.
-          // Otherwise, if we are performing the initial session sync, fallback to the stored interest.
-          const finalInterest = detectedInterest || (!sessionSynced ? storedInterest : null);
-
-          updatePayload.visitor_type = visitorType;
-          if (finalInterest) {
-            updatePayload.property_interest = finalInterest;
-          }
-
-          console.log(
-            `[PersonalizeDebug] Sync needed (sessionSynced: ${sessionSynced}, typeChanged: ${visitorTypeChanged}, interestChanged: ${interestChanged}). calling sdk.set() with:`,
-            updatePayload
-          );
-          await sdk.set(updatePayload);
-          console.log("[PersonalizeDebug] sdk.set() call complete.");
-
-          sessionStorage.setItem("personalize_session_synced", "true");
           localStorage.setItem("debug_active_visitor_type", visitorType);
-          if (finalInterest) {
-            localStorage.setItem("property_interest", finalInterest);
+          if (detectedInterest) {
+            localStorage.setItem("property_interest", detectedInterest);
           }
-
-          console.log("[PersonalizeDebug] Triggering reload to apply updated state...");
+          
           window.location.reload();
         } else {
-          console.log("[PersonalizeDebug] Visitor type and property interest already match. Skipping sdk.set().");
+          console.log("[PersonalizeDebug] Local states match. No reload required.");
         }
 
         // Diagnostics
