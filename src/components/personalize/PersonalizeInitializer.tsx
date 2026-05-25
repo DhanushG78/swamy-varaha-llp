@@ -14,10 +14,22 @@ export default function PersonalizeInitializer() {
           return;
         }
 
-        const visitorType = "returning";
+        const hasVisited = localStorage.getItem("hasVisited");
+        let visitorType: "new" | "returning" = "returning";
+
+        if (hasVisited === null) {
+          visitorType = "new";
+          localStorage.setItem("hasVisited", "pending_returning");
+        } else if (hasVisited === "pending_returning") {
+          visitorType = "new";
+          localStorage.setItem("hasVisited", "true");
+        } else {
+          visitorType = "returning";
+        }
+
         const debugActiveType = localStorage.getItem("debug_active_visitor_type");
 
-        console.log("[PersonalizeDebug] Forced visitor type:", visitorType);
+        console.log("[PersonalizeDebug] Evaluated visitor type:", visitorType);
         console.log("[PersonalizeDebug] Last active visitor type from localStorage:", debugActiveType);
 
         if (debugActiveType !== visitorType) {
@@ -25,13 +37,10 @@ export default function PersonalizeInitializer() {
           await sdk.set({ visitor_type: visitorType });
           console.log("[PersonalizeDebug] sdk.set() call complete.");
           localStorage.setItem("debug_active_visitor_type", visitorType);
-          console.log("[PersonalizeDebug] Triggering reload to apply forced visitor type at edge...");
+          console.log("[PersonalizeDebug] Triggering reload to apply visitor type at edge...");
           window.location.reload();
         } else {
-          console.log("[PersonalizeDebug] Active type already matches forced type. Maintaining state.");
-          console.log("[PersonalizeDebug] Calling sdk.set()...");
-          await sdk.set({ visitor_type: visitorType });
-          console.log("[PersonalizeDebug] sdk.set() call complete.");
+          console.log("[PersonalizeDebug] Active type already matches evaluated type. Skipping sdk.set() to avoid duplicate calls.");
         }
 
         // Diagnostics
