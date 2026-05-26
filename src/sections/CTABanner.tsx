@@ -1,15 +1,28 @@
 import Link from "next/link";
 
 const CTABanner = ({ data }: { data: any }) => {
-  const heading = data?.heading || "Be a part of our growing real estate agents";
-  const description = data?.description || "";
-  const btnText = data?.button_text || "Apply for Real Estate agent";
-  const btnLink = data?.button_link?.href || (typeof data?.button_link === "string" ? data.button_link : "/sell");
-  const bgVideo = data?.background_video?.url || "";
+  const heading = data?.cta_heading || data?.heading || "Be a part of our growing real estate agents";
+  const description = data?.cta_description || data?.description || "";
+  const btnText = data?.cta_button_text || data?.button_text || "Apply for Real Estate agent";
+  const rawLink = data?.cta_button_link || data?.button_link;
+  const btnLink = rawLink?.href || (typeof rawLink === "string" ? rawLink : "/sell");
 
-  // Step 5: Add runtime debug visibility
-  console.log(`[CTA Debug] Heading: "${heading}"`);
-  console.log(`[CTA Debug] Button: "${btnText}"`);
+  // Dynamically resolve Contentstack asset background video structure
+  let bgVideo = "";
+  if (data?.background_video) {
+    if (Array.isArray(data.background_video)) {
+      bgVideo = data.background_video[0]?.url || "";
+    } else if (typeof data.background_video === "object") {
+      bgVideo = data.background_video.url || "";
+    } else if (typeof data.background_video === "string") {
+      bgVideo = data.background_video;
+    }
+  }
+
+  // Step 4: Add CTA Runtime Debug Logs
+  console.log(`[CTA Runtime Debug] Heading: "${heading}"`);
+  console.log(`[CTA Runtime Debug] Button: "${btnText}"`);
+  console.log(`[CTA Runtime Debug] Video: "${bgVideo}"`);
 
   if (bgVideo) {
     return (

@@ -33,6 +33,7 @@ export default async function Home(props: { searchParams: Promise<any> }) {
           return <AchievementSection key={`achiev-${index}`} data={section.achievement_section} />;
         }
         if (section.cta_banner_section) {
+          console.log("[CTA Section Debug] Rendering CTA Section with payload:", JSON.stringify(section.cta_banner_section, null, 2));
           return <CTABanner key={`cta-${index}`} data={section.cta_banner_section} />;
         }
         if (section.value_proposition_section) {

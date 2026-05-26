@@ -200,6 +200,18 @@ export const getHomePage = async (searchParams?: any) => {
       if (heroSec) {
         console.log("[CMS] Hero section heading in CDA response:", heroSec.hero_section?.heading);
       }
+
+      // STEP 1 — Add Deep CTA Payload Logging
+      const ctaSec = entry.page_sections?.find((s: any) => s.cta_banner_section);
+      if (ctaSec) {
+        console.log("[CMS] Deep CTA Payload Logging:");
+        console.log("[CMS] Full CTA Section Payload:", JSON.stringify(ctaSec, null, 2));
+        console.log("[CMS] cta_heading:", ctaSec.cta_banner_section?.cta_heading);
+        console.log("[CMS] cta_description:", ctaSec.cta_banner_section?.cta_description);
+        console.log("[CMS] cta_button_text:", ctaSec.cta_banner_section?.cta_button_text);
+        console.log("[CMS] cta_button_link:", ctaSec.cta_banner_section?.cta_button_link);
+        console.log("[CMS] background_video:", ctaSec.cta_banner_section?.background_video);
+      }
     }
     return result[0]?.[0] ?? null;
   } catch (err) {
