@@ -34,10 +34,13 @@ export default function PersonalizeInitializer() {
         const debugActiveType = localStorage.getItem("debug_active_visitor_type");
 
         // 2. Behavioral Interest Detection Logic (Step 2 & 3)
-        let detectedInterest: "beachfront" | "villa" | "ultraluxury" | null = null;
+        // NOTE: The Contentstack Personalize audience rule for "Beachfront Buyers" is configured
+        // to check for property_interest String equals "beach" (not "beachfront").
+        // We map "beachfront" path detection to "beach" to align with this rule.
+        let detectedInterest: "beach" | "villa" | "ultraluxury" | null = null;
         const path = pathname.toLowerCase();
         if (path.includes("beachfront")) {
-          detectedInterest = "beachfront";
+          detectedInterest = "beach";
         } else if (path.includes("villa")) {
           detectedInterest = "villa";
         } else if (path.includes("ultraluxury")) {
