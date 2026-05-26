@@ -41,14 +41,6 @@ export default async function Home(props: { searchParams: Promise<any> }) {
         }
         return null;
       })}
-
-      {/* Temporary Debug Block to inspect exact JSON structure in browser */}
-      <div style={{ backgroundColor: "#1e1e1e", color: "#a7f3d0", padding: "2rem", margin: "2rem", border: "1px solid #374151", borderRadius: "0.5rem", fontFamily: "monospace" }}>
-        <h3 style={{ color: "#fff", fontWeight: "bold", marginBottom: "1rem" }}>🔧 [Home Page Page Sections Raw Payload Debug]</h3>
-        <pre style={{ fontSize: "0.75rem", overflowX: "auto" }}>
-          {JSON.stringify(homePage.page_sections, null, 2)}
-        </pre>
-      </div>
     </main>
   );
 }
