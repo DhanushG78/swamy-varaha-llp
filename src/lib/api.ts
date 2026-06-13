@@ -194,6 +194,31 @@ export const getHomePage = async (searchParams?: any) => {
     console.log("[CMS] getHomePage found entry:", result[0]?.[0] ? "yes" : "no");
     if (result[0]?.[0]) {
       const entry = result[0][0];
+      
+      // Secondary fetch for CTA-specific variant background video if needed due to Asset Overlap in Delivery API
+      if (params?.personalize_variants) {
+        const aliases = getVariantAliasesFromParam(params.personalize_variants);
+        const ctaAlias = aliases.find((alias: string) => alias.startsWith("cs_personalize_3_"));
+        if (ctaAlias) {
+          console.log("[CMS] Secondary fetch for CTA-specific variant to resolve Asset Overlap:", ctaAlias);
+          try {
+            const ctaQuery = stack.ContentType("home_page").Query();
+            ctaQuery.variants([ctaAlias]);
+            const ctaResult = await ctaQuery.toJSON().find();
+            const ctaEntry = ctaResult[0]?.[0];
+            if (ctaEntry) {
+              const ctaHeroSec = ctaEntry.page_sections?.find((s: any) => s.hero_section)?.hero_section;
+              if (ctaHeroSec?.background_video) {
+                console.log("[CMS] Found cta_background_video in secondary fetch:", ctaHeroSec.background_video.filename || ctaHeroSec.background_video);
+                entry.cta_background_video = ctaHeroSec.background_video;
+              }
+            }
+          } catch (ctaErr) {
+            console.error("[CMS] Secondary fetch for CTA personalization failed:", ctaErr);
+          }
+        }
+      }
+
       console.log("[CMS] Returned entry title:", entry.title);
       console.log("[CMS] Returned entry publish details variants:", entry.publish_details?.variants);
       const heroSec = entry.page_sections?.find((s: any) => s.hero_section);

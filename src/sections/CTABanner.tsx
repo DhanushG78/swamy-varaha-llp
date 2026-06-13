@@ -19,10 +19,10 @@ const CTABanner = ({ data }: { data: any }) => {
     }
   }
 
-  // Step 4: Add CTA Runtime Debug Logs
-  console.log(`[CTA Runtime Debug] Heading: "${heading}"`);
-  console.log(`[CTA Runtime Debug] Button: "${btnText}"`);
-  console.log(`[CTA Runtime Debug] Video: "${bgVideo}"`);
+  // Diagnostic logging
+  console.log('[CTA VIDEO DEBUG] Raw CTA Payload:', JSON.stringify(data, null, 2));
+  console.log('[CTA VIDEO DEBUG] Background Video Field:', data?.background_video);
+  console.log('[CTA VIDEO DEBUG] Background Video URL:', bgVideo);
 
   if (bgVideo) {
     return (

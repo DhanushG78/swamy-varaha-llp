@@ -10,6 +10,16 @@ export default function PersonalizeInitializer() {
   useEffect(() => {
     const initializeVisitor = async () => {
       try {
+        if (typeof window !== "undefined" && window.location.search.includes("clear=true")) {
+          console.log("[PersonalizeDebug] Clearing local storage and cookies...");
+          localStorage.clear();
+          document.cookie.split(";").forEach((c) => {
+            document.cookie = c
+              .replace(/^ +/, "")
+              .replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/");
+          });
+        }
+
         console.log("[PersonalizeDebug] Initializing visitor classification and interest detection...");
         const sdk = await getPersonalizeSdk();
         if (!sdk) {

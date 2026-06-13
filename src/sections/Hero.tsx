@@ -24,24 +24,32 @@ const Hero = ({ data }: { data: any }) => {
   // Dynamically resolve background video URL
   let videoUrl = "/hero.mp4";
   if (data?.background_video) {
+    let resolvedUrl = "";
     if (Array.isArray(data.background_video)) {
-      videoUrl = data.background_video[0]?.url || "/hero.mp4";
+      resolvedUrl = data.background_video[0]?.url || "";
     } else if (typeof data.background_video === "object") {
-      videoUrl = data.background_video.url || "/hero.mp4";
+      resolvedUrl = data.background_video.url || "";
     } else if (typeof data.background_video === "string") {
-      videoUrl = data.background_video;
+      resolvedUrl = data.background_video;
+    }
+    
+    // Only bind to Hero video assets. If it's a CTA banner video, fallback to default.
+    if (resolvedUrl) {
+      if (resolvedUrl.toLowerCase().includes("hero")) {
+        videoUrl = resolvedUrl;
+      } else {
+        videoUrl = "/hero.mp4";
+      }
     }
   }
 
-  const heading = data?.cta_heading || data?.heading || "Easiest way to find your dream home";
-  const subheading = data?.cta_description || data?.subheading || "";
-  const btnText = data?.cta_button_text || "Search";
-  const btnLink = data?.cta_button_link || "";
+  const heading = data?.heading || "Easiest way to find your dream home";
+  const subheading = data?.subheading || "";
+  const btnText = "Search";
 
   // Diagnostic logging
   console.log(`[Hero Debug] Heading: "${heading}"`);
   console.log(`[Hero Debug] Button: "${btnText}"`);
-  console.log(`[Hero Debug] Link: "${btnLink}"`);
   console.log(`[Hero Debug] Video: "${videoUrl}"`);
 
   return (
@@ -78,36 +86,25 @@ const Hero = ({ data }: { data: any }) => {
           <p className="text-white/80 text-lg mb-8 max-w-2xl">{subheading}</p>
         )}
 
-        {/* Render CTA Link Button if btnLink is defined; otherwise render Search Bar */}
-        {btnLink ? (
-          <Link
-            href={btnLink}
-            className="px-8 py-3 text-sm font-medium text-white transition-all duration-300 hover:scale-[1.02] hover:bg-[#d52b36] shadow-lg inline-block"
+        {/* Search Bar */}
+        <div className="flex w-full max-w-xl">
+          <input
+            type="text"
+            placeholder="Search for a property..."
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            onKeyDown={handleKeyDown}
+            className="flex-1 px-5 py-3 text-sm outline-none border-0"
+            style={{ backgroundColor: "#ffffff", color: "#343a40" }}
+          />
+          <button
+            onClick={handleSearch}
+            className="px-6 py-3 text-sm font-medium text-white transition-colors duration-200 cursor-pointer"
             style={{ backgroundColor: "#e63946" }}
           >
             {btnText}
-          </Link>
-        ) : (
-          /* Search Bar */
-          <div className="flex w-full max-w-xl">
-            <input
-              type="text"
-              placeholder="Search for a property..."
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-              onKeyDown={handleKeyDown}
-              className="flex-1 px-5 py-3 text-sm outline-none border-0"
-              style={{ backgroundColor: "#ffffff", color: "#343a40" }}
-            />
-            <button
-              onClick={handleSearch}
-              className="px-6 py-3 text-sm font-medium text-white transition-colors duration-200 cursor-pointer"
-              style={{ backgroundColor: "#e63946" }}
-            >
-              {btnText}
-            </button>
-          </div>
-        )}
+          </button>
+        </div>
       </div>
     </section>
   );

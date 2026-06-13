@@ -34,7 +34,28 @@ export default async function Home(props: { searchParams: Promise<any> }) {
         }
         if (section.cta_banner_section) {
           console.log("[CTA Section Debug] Rendering CTA Section with payload:", JSON.stringify(section.cta_banner_section, null, 2));
-          return <CTABanner key={`cta-${index}`} data={section.cta_banner_section} />;
+          const heroSec = homePage.page_sections.find((s: any) => s.hero_section)?.hero_section;
+          
+          // Determine if the video in the hero payload is actually a Hero video or a CTA video
+          let isHeroVideo = false;
+          if (heroSec?.background_video) {
+            const videoUrl = heroSec.background_video.url || (Array.isArray(heroSec.background_video) ? heroSec.background_video[0]?.url : "") || "";
+            const filename = heroSec.background_video.filename || "";
+            const strVal = typeof heroSec.background_video === "string" ? heroSec.background_video : "";
+            isHeroVideo = videoUrl.toLowerCase().includes("hero") || 
+                          filename.toLowerCase().includes("hero") || 
+                          strVal.toLowerCase().includes("hero");
+          }
+
+          const mergedData = {
+            ...section.cta_banner_section,
+            cta_heading: heroSec?.cta_heading,
+            cta_description: heroSec?.cta_description,
+            cta_button_text: heroSec?.cta_button_text,
+            cta_button_link: heroSec?.cta_button_link,
+            background_video: homePage.cta_background_video || ((heroSec?.cta_heading && !isHeroVideo) ? heroSec?.background_video : undefined)
+          };
+          return <CTABanner key={`cta-${index}`} data={mergedData} />;
         }
         if (section.value_proposition_section) {
           return <ValueProposition key={`vp-${index}`} data={section.value_proposition_section} />;
