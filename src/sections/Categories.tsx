@@ -22,7 +22,7 @@ const Categories = ({ data }: { data: any }) => {
           {categoriesList.map((item: any, i: number) => {
             const catTitle = item.title || "Category";
             const catDesc = item.description || "";
-            const slug = item.slug || "properties";
+            const slug = (item.slug || item.title || item.name || "properties").toLowerCase();
             
             return (
               <div

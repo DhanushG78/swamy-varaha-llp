@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 import PropertyCard from "@/components/PropertyCard";
 
@@ -13,7 +13,7 @@ interface Property {
   beds?: string | number;
   baths?: string | number;
   images?: { url: string }[];
-  category?: { name: string }[] | { name: string };
+  category?: { name: string; title?: string; slug?: string }[] | { name: string; title?: string; slug?: string };
 }
 
 /**
@@ -38,14 +38,41 @@ function parsePrice(priceStr: string): number {
 }
 
 /**
- * Get the category name from a property, handling both array and object reference formats.
+ * Extract all display category names from a property.
  */
-function getCategoryName(property: Property): string {
-  if (!property.category) return "";
+function getPropertyCategoryNames(property: Property): string[] {
+  if (!property.category) return [];
+  const names = new Set<string>();
+  const addName = (cat: any) => {
+    const name = cat.name || cat.title;
+    if (name) names.add(name);
+  };
   if (Array.isArray(property.category)) {
-    return property.category[0]?.name?.toLowerCase() || "";
+    property.category.forEach(addName);
+  } else {
+    addName(property.category);
   }
-  return (property.category as { name: string }).name?.toLowerCase() || "";
+  return Array.from(names);
+}
+
+/**
+ * Get all category identifiers (name, title, slug) lowercased for match checks.
+ */
+function getPropertyCategoryIdentifiers(property: Property): string[] {
+  if (!property.category) return [];
+  const idents = new Set<string>();
+  const addCategory = (cat: any) => {
+    if (cat.name) idents.add(cat.name.toLowerCase());
+    if (cat.title) idents.add(cat.title.toLowerCase());
+    if (cat.slug) idents.add(cat.slug.toLowerCase());
+  };
+  
+  if (Array.isArray(property.category)) {
+    property.category.forEach(addCategory);
+  } else {
+    addCategory(property.category);
+  }
+  return Array.from(idents);
 }
 
 type PriceRange = "" | "under50L" | "50L-1Cr" | "1Cr-3Cr" | "above3Cr";
@@ -80,17 +107,24 @@ type Props = {
 export default function SearchFilter({ properties }: Props) {
   const searchParams = useSearchParams();
   const initialQuery = searchParams.get("q") || "";
+  const initialCategory = searchParams.get("category") || "";
 
   const [query, setQuery] = useState(initialQuery);
-  const [category, setCategory] = useState("");
+  const [category, setCategory] = useState(initialCategory);
   const [priceRange, setPriceRange] = useState<PriceRange>("");
 
-  // Extract unique categories from the data
+  // Sync category state when URL changes (e.g. from navbar clicks)
+  useEffect(() => {
+    setQuery(searchParams.get("q") || "");
+    setCategory(searchParams.get("category") || "");
+  }, [searchParams]);
+
+  // Extract unique categories from the data for the dropdown filter
   const categories = useMemo(() => {
     const set = new Set<string>();
     properties.forEach((p) => {
-      const name = getCategoryName(p);
-      if (name) set.add(name);
+      const names = getPropertyCategoryNames(p);
+      names.forEach((name) => set.add(name.toLowerCase()));
     });
     return Array.from(set).sort();
   }, [properties]);
@@ -108,10 +142,10 @@ export default function SearchFilter({ properties }: Props) {
         if (!matchesText) return false;
       }
 
-      // Category filter
+      // Category filter (checks if target category is in property identifiers)
       if (category) {
-        const catName = getCategoryName(p);
-        if (catName !== category.toLowerCase()) return false;
+        const idents = getPropertyCategoryIdentifiers(p);
+        if (!idents.includes(category.toLowerCase())) return false;
       }
 
       // Price range filter
