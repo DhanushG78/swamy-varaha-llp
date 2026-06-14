@@ -66,12 +66,13 @@ export default async function Home(props: { searchParams: Promise<any> }) {
           return <AchievementSection key={`achiev-${index}`} data={section.achievement_section} />;
         }
         if (section.cta_banner_section) {
-          if (isCtaExperienceActive) {
-            console.log("[CTA Section Debug] CTA Personalization active. Skipping bottom CTA banner as it is rendered as Hero.");
-            return null;
-          }
-          console.log("[CTA Section Debug] Rendering default bottom CTA Banner:", JSON.stringify(section.cta_banner_section, null, 2));
-          return <CTABanner key={`cta-${index}`} data={section.cta_banner_section} />;
+          console.log("[CTA Section Debug] Rendering bottom CTA Banner (constant across all variants):", JSON.stringify(section.cta_banner_section, null, 2));
+          const overriddenCta = {
+            ...section.cta_banner_section,
+            button_link: "/agents",
+            cta_button_link: "/agents"
+          };
+          return <CTABanner key={`cta-${index}`} data={overriddenCta} />;
         }
         if (section.value_proposition_section) {
           return <ValueProposition key={`vp-${index}`} data={section.value_proposition_section} />;

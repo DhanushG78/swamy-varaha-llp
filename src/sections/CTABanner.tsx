@@ -27,9 +27,8 @@ const CTABanner = ({ data, isHero = false }: { data: any; isHero?: boolean }) =>
   if (bgVideo) {
     return (
       <section 
-        className={`relative overflow-hidden flex items-center justify-center ${
-          isHero ? "min-h-[500px] md:min-h-[600px] lg:min-h-[70vh]" : "min-h-[320px] md:min-h-[240px]"
-        }`}
+        className="relative overflow-hidden flex items-center justify-center"
+        style={isHero ? { height: "100vh", marginTop: "-4rem" } : {}}
       >
         {/* Background Video */}
         <video
@@ -47,7 +46,7 @@ const CTABanner = ({ data, isHero = false }: { data: any; isHero?: boolean }) =>
         <div 
           className={`absolute inset-0 z-10 ${
             isHero 
-              ? "bg-black/60" 
+              ? "bg-black/55" 
               : "bg-gradient-to-r from-black/80 via-black/60 to-black/30 md:from-black/75 md:to-black/40"
           }`} 
         />
@@ -56,7 +55,7 @@ const CTABanner = ({ data, isHero = false }: { data: any; isHero?: boolean }) =>
         <div 
           className={`relative z-20 w-full mx-auto px-6 ${
             isHero 
-              ? "max-w-4xl py-16 md:py-24 flex flex-col items-center justify-center text-center gap-6 md:gap-8" 
+              ? "max-w-4xl flex flex-col items-center justify-center text-center gap-6 md:gap-8" 
               : "max-w-7xl py-12 md:py-16 flex flex-col md:flex-row items-center justify-between gap-6"
           }`}
         >
@@ -92,8 +91,8 @@ const CTABanner = ({ data, isHero = false }: { data: any; isHero?: boolean }) =>
 
   return (
     <section 
-      style={{ backgroundColor: "#e63946" }} 
-      className={isHero ? "py-20 md:py-32" : "py-12 md:py-16"}
+      style={isHero ? { backgroundColor: "#e63946", height: "100vh", marginTop: "-4rem" } : { backgroundColor: "#e63946" }} 
+      className={isHero ? "flex items-center justify-center" : "py-12 md:py-16"}
     >
       <div 
         className={`mx-auto px-6 ${
