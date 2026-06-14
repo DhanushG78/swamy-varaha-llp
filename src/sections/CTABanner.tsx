@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-const CTABanner = ({ data }: { data: any }) => {
+const CTABanner = ({ data, isHero = false }: { data: any; isHero?: boolean }) => {
   const heading = data?.cta_heading || data?.heading || "Be a part of our growing real estate agents";
   const description = data?.cta_description || data?.description || "";
   const btnText = data?.cta_button_text || data?.button_text || "Apply for Real Estate agent";
@@ -26,7 +26,11 @@ const CTABanner = ({ data }: { data: any }) => {
 
   if (bgVideo) {
     return (
-      <section className="relative overflow-hidden min-h-[320px] md:min-h-[240px] flex items-center">
+      <section 
+        className={`relative overflow-hidden flex items-center justify-center ${
+          isHero ? "min-h-[500px] md:min-h-[600px] lg:min-h-[70vh]" : "min-h-[320px] md:min-h-[240px]"
+        }`}
+      >
         {/* Background Video */}
         <video
           autoPlay
@@ -40,16 +44,36 @@ const CTABanner = ({ data }: { data: any }) => {
         </video>
 
         {/* Premium Overlay for Contrast & Text Readability */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/30 md:from-black/75 md:to-black/40 z-10" />
+        <div 
+          className={`absolute inset-0 z-10 ${
+            isHero 
+              ? "bg-black/60" 
+              : "bg-gradient-to-r from-black/80 via-black/60 to-black/30 md:from-black/75 md:to-black/40"
+          }`} 
+        />
 
         {/* Content Wrapper */}
-        <div className="relative z-20 w-full max-w-7xl mx-auto px-6 py-12 md:py-16 flex flex-col md:flex-row items-center justify-between gap-6">
-          <div className="text-center md:text-left">
-            <h2 className="text-2xl md:text-3xl font-medium text-white tracking-tight">
+        <div 
+          className={`relative z-20 w-full mx-auto px-6 ${
+            isHero 
+              ? "max-w-4xl py-16 md:py-24 flex flex-col items-center justify-center text-center gap-6 md:gap-8" 
+              : "max-w-7xl py-12 md:py-16 flex flex-col md:flex-row items-center justify-between gap-6"
+          }`}
+        >
+          <div className={isHero ? "text-center" : "text-center md:text-left"}>
+            <h2 
+              className={`font-medium text-white tracking-tight leading-tight ${
+                isHero ? "text-3xl md:text-5xl" : "text-2xl md:text-3xl"
+              }`}
+            >
               {heading}
             </h2>
             {description && (
-              <p className="text-white/80 text-sm md:text-base mt-2 max-w-xl leading-relaxed">
+              <p 
+                className={`text-white/80 mt-2 leading-relaxed ${
+                  isHero ? "text-base md:text-lg max-w-2xl mt-4" : "text-sm md:text-base max-w-xl"
+                }`}
+              >
                 {description}
               </p>
             )}
@@ -67,14 +91,31 @@ const CTABanner = ({ data }: { data: any }) => {
   }
 
   return (
-    <section style={{ backgroundColor: "#e63946" }} className="py-12 md:py-16">
-      <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
-        <div className="text-center md:text-left">
-          <h2 className="text-2xl md:text-3xl font-medium text-white tracking-tight">
+    <section 
+      style={{ backgroundColor: "#e63946" }} 
+      className={isHero ? "py-20 md:py-32" : "py-12 md:py-16"}
+    >
+      <div 
+        className={`mx-auto px-6 ${
+          isHero 
+            ? "max-w-4xl flex flex-col items-center justify-center text-center gap-6 md:gap-8" 
+            : "max-w-7xl flex flex-col md:flex-row items-center justify-between gap-6"
+        }`}
+      >
+        <div className={isHero ? "text-center" : "text-center md:text-left"}>
+          <h2 
+            className={`font-medium text-white tracking-tight leading-tight ${
+              isHero ? "text-3xl md:text-5xl" : "text-2xl md:text-3xl"
+            }`}
+          >
             {heading}
           </h2>
           {description && (
-            <p className="text-white/90 text-sm md:text-base mt-2 max-w-xl leading-relaxed">
+            <p 
+              className={`text-white/95 mt-2 leading-relaxed ${
+                isHero ? "text-base md:text-lg max-w-2xl mt-4" : "text-sm md:text-base max-w-xl"
+              }`}
+            >
               {description}
             </p>
           )}
