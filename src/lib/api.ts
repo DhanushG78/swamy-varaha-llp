@@ -21,9 +21,10 @@ const getSearchParamsFromHeaders = async (): Promise<any> => {
 };
 
 const getStack = async (searchParams?: any) => {
-  let params = searchParams;
-  if (!params) {
-    params = await getSearchParamsFromHeaders();
+  let params = { ...(searchParams || {}) };
+  const headerParams = await getSearchParamsFromHeaders();
+  if (headerParams) {
+    params = { ...headerParams, ...params };
   }
 
   const stack = Contentstack.Stack({
@@ -163,9 +164,10 @@ export const getGlobalSettings = async (searchParams?: any) => {
 export const getHomePage = async (searchParams?: any) => {
   try {
     console.log("[CMS] getHomePage called");
-    let params = searchParams;
-    if (!params) {
-      params = await getSearchParamsFromHeaders();
+    let params = { ...(searchParams || {}) };
+    const headerParams = await getSearchParamsFromHeaders();
+    if (headerParams) {
+      params = { ...headerParams, ...params };
     }
     console.log("[CMS] getHomePage extracted search params:", params);
 
