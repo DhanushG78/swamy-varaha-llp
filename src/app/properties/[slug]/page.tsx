@@ -1,6 +1,7 @@
 import { getPropertyBySlug } from "@/lib/api";
 import Link from "next/link";
 import ImageSlider from "@/components/ImageSlider";
+import PropertyViewTracker from "@/components/personalize/PropertyViewTracker";
 
 export const dynamic = "force-dynamic";
 
@@ -35,6 +36,7 @@ export default async function PropertyDetailPage(props: {
 
   return (
     <main>
+      <PropertyViewTracker slug={slug} />
       {/* Page Header */}
       <div style={{ backgroundColor: "#1e1e1e" }} className="py-16 md:py-20 px-6">
         <div className="max-w-7xl mx-auto">

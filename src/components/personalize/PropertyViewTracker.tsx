@@ -1,0 +1,59 @@
+"use client";
+
+import { useEffect } from "react";
+import { getPersonalizeSdk } from "@/lib/personalize";
+import { trackPropertyView } from "@/lib/personalize/events";
+
+interface PropertyViewTrackerProps {
+  slug: string;
+}
+
+export default function PropertyViewTracker({ slug }: PropertyViewTrackerProps) {
+  useEffect(() => {
+    let isCurrent = true;
+
+    const executeTracking = async () => {
+      const sessionKey = `property-view-${slug}`;
+
+      // 1. Session Storage Guard to prevent duplicates
+      if (typeof window !== "undefined" && sessionStorage.getItem(sessionKey)) {
+        console.log(`[Personalize Event] property_view skipped (already tracked): ${slug}`);
+        return;
+      }
+
+      try {
+        // 2. Initialize SDK
+        const sdk = await getPersonalizeSdk();
+        if (!sdk) {
+          console.warn("[Personalize Event] SDK initialization failed (SDK returned null/undefined)");
+          return;
+        }
+
+        console.log("[Personalize Event] SDK initialized");
+
+        // Prevent firing if component unmounted while SDK was initializing
+        if (!isCurrent) return;
+
+        // 3. Fire the property_view event
+        await trackPropertyView(slug);
+
+        // 4. Mark as tracked in sessionStorage
+        if (typeof window !== "undefined") {
+          sessionStorage.setItem(sessionKey, "true");
+        }
+
+        console.log(`[Personalize Event] property_view fired: ${slug}`);
+      } catch (error: any) {
+        console.error(`[Personalize Event] SDK initialization failed: ${error?.message || error}`);
+      }
+    };
+
+    executeTracking();
+
+    return () => {
+      isCurrent = false;
+    };
+  }, [slug]);
+
+  return null;
+}
