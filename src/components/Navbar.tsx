@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState, useEffect } from "react";
+import { trackCategoryClick } from "@/lib/personalize/events";
 
 const staticNavLinks = [
   { href: "/", label: "Home" },
@@ -92,6 +93,7 @@ const Navbar = ({ categories = [] }: { categories?: any[] }) => {
                   <Link
                     key={cat.uid}
                     href={`/properties?category=${cat.title.toLowerCase()}`}
+                    onClick={() => trackCategoryClick(cat.title.toLowerCase())}
                     className="block px-4 py-2 text-sm text-gray-300 hover:text-white hover:bg-white/10 transition-colors"
                   >
                     {cat.title}
@@ -167,7 +169,10 @@ const Navbar = ({ categories = [] }: { categories?: any[] }) => {
             <Link
               key={cat.uid}
               href={`/properties?category=${cat.title.toLowerCase()}`}
-              onClick={() => setMobileOpen(false)}
+              onClick={() => {
+                setMobileOpen(false);
+                trackCategoryClick(cat.title.toLowerCase());
+              }}
               className="block px-6 py-2 text-gray-300 hover:text-white hover:bg-white/5 transition-colors duration-200 text-sm border-b border-gray-800"
             >
               {cat.title}
