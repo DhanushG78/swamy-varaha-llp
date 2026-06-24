@@ -1,0 +1,516 @@
+{
+  "title": "Home Page",
+  "description": "",
+  "options": {
+    "is_page": false,
+    "singleton": true,
+    "sub_title": [],
+    "title": "title"
+  },
+  "schema": [
+    {
+      "data_type": "text",
+      "display_name": "Title",
+      "field_metadata": {
+        "_default": true,
+        "version": 3
+      },
+      "mandatory": true,
+      "uid": "title",
+      "unique": true,
+      "multiple": false,
+      "non_localizable": false
+    },
+    {
+      "data_type": "blocks",
+      "display_name": "Page Sections",
+      "blocks": [
+        {
+          "title": "Hero Section",
+          "uid": "hero_section",
+          "schema": [
+            {
+              "data_type": "text",
+              "display_name": "Heading",
+              "uid": "heading",
+              "field_metadata": {
+                "description": "",
+                "default_value": "",
+                "version": 3
+              },
+              "format": "",
+              "error_messages": {
+                "format": ""
+              },
+              "mandatory": false,
+              "multiple": false,
+              "non_localizable": false,
+              "unique": false
+            },
+            {
+              "data_type": "text",
+              "display_name": "Subheading",
+              "uid": "subheading",
+              "field_metadata": {
+                "description": "",
+                "default_value": "",
+                "multiline": true,
+                "version": 3
+              },
+              "format": "",
+              "error_messages": {
+                "format": ""
+              },
+              "mandatory": false,
+              "multiple": false,
+              "non_localizable": false,
+              "unique": false
+            },
+            {
+              "data_type": "text",
+              "display_name": "CTA Heading",
+              "uid": "cta_heading",
+              "field_metadata": {
+                "description": "",
+                "default_value": "",
+                "version": 3
+              },
+              "format": "",
+              "error_messages": {
+                "format": ""
+              },
+              "mandatory": false,
+              "multiple": false,
+              "non_localizable": false,
+              "unique": false
+            },
+            {
+              "data_type": "text",
+              "display_name": "CTA Description",
+              "uid": "cta_description",
+              "field_metadata": {
+                "description": "",
+                "default_value": "",
+                "multiline": true,
+                "version": 3
+              },
+              "format": "",
+              "error_messages": {
+                "format": ""
+              },
+              "mandatory": false,
+              "multiple": false,
+              "non_localizable": false,
+              "unique": false
+            },
+            {
+              "data_type": "text",
+              "display_name": "CTA Button Text",
+              "uid": "cta_button_text",
+              "field_metadata": {
+                "description": "",
+                "default_value": "",
+                "version": 3
+              },
+              "format": "",
+              "error_messages": {
+                "format": ""
+              },
+              "mandatory": false,
+              "multiple": false,
+              "non_localizable": false,
+              "unique": false
+            },
+            {
+              "data_type": "text",
+              "display_name": "CTA Button Link",
+              "uid": "cta_button_link",
+              "field_metadata": {
+                "description": "",
+                "default_value": "",
+                "version": 3
+              },
+              "format": "",
+              "error_messages": {
+                "format": ""
+              },
+              "mandatory": false,
+              "multiple": false,
+              "non_localizable": false,
+              "unique": false
+            },
+            {
+              "data_type": "file",
+              "display_name": "Background Video",
+              "uid": "background_video",
+              "extensions": [],
+              "field_metadata": {
+                "description": "",
+                "rich_text_type": "standard"
+              },
+              "mandatory": false,
+              "multiple": false,
+              "non_localizable": false,
+              "unique": false
+            }
+          ]
+        },
+        {
+          "title": "Categories Section",
+          "uid": "categories_section",
+          "schema": [
+            {
+              "data_type": "text",
+              "display_name": "Section Title",
+              "uid": "section_title",
+              "field_metadata": {
+                "description": "",
+                "default_value": "",
+                "version": 3
+              },
+              "format": "",
+              "error_messages": {
+                "format": ""
+              },
+              "mandatory": false,
+              "multiple": false,
+              "non_localizable": false,
+              "unique": false
+            },
+            {
+              "data_type": "reference",
+              "display_name": "Categories",
+              "reference_to": [
+                "category"
+              ],
+              "field_metadata": {
+                "ref_multiple": true,
+                "ref_multiple_content_types": true,
+                "default_value": null
+              },
+              "uid": "categories",
+              "mandatory": false,
+              "multiple": false,
+              "non_localizable": false,
+              "unique": false
+            }
+          ]
+        },
+        {
+          "title": "Featured Properties Section",
+          "uid": "featured_properties_section",
+          "schema": [
+            {
+              "data_type": "text",
+              "display_name": "Section Title",
+              "uid": "section_title",
+              "field_metadata": {
+                "description": "",
+                "default_value": "",
+                "version": 3
+              },
+              "format": "",
+              "error_messages": {
+                "format": ""
+              },
+              "mandatory": false,
+              "multiple": false,
+              "non_localizable": false,
+              "unique": false
+            },
+            {
+              "data_type": "reference",
+              "display_name": "Properties",
+              "reference_to": [
+                "property"
+              ],
+              "field_metadata": {
+                "ref_multiple": true,
+                "ref_multiple_content_types": true,
+                "default_value": null
+              },
+              "uid": "properties",
+              "mandatory": false,
+              "multiple": false,
+              "non_localizable": false,
+              "unique": false
+            }
+          ]
+        },
+        {
+          "title": "Achievement Section",
+          "uid": "achievement_section",
+          "schema": [
+            {
+              "data_type": "text",
+              "display_name": "Section Title",
+              "uid": "section_title",
+              "field_metadata": {
+                "description": "",
+                "default_value": "",
+                "version": 3
+              },
+              "format": "",
+              "error_messages": {
+                "format": ""
+              },
+              "mandatory": false,
+              "multiple": false,
+              "non_localizable": false,
+              "unique": false
+            },
+            {
+              "data_type": "reference",
+              "display_name": "Achievements",
+              "reference_to": [
+                "achievement"
+              ],
+              "field_metadata": {
+                "ref_multiple": true,
+                "ref_multiple_content_types": true,
+                "default_value": null
+              },
+              "uid": "achievements",
+              "mandatory": false,
+              "multiple": false,
+              "non_localizable": false,
+              "unique": false
+            }
+          ]
+        },
+        {
+          "title": "CTA Banner Section",
+          "uid": "cta_banner_section",
+          "schema": [
+            {
+              "data_type": "text",
+              "display_name": "Heading",
+              "uid": "heading",
+              "field_metadata": {
+                "description": "",
+                "default_value": "",
+                "version": 3
+              },
+              "format": "",
+              "error_messages": {
+                "format": ""
+              },
+              "mandatory": false,
+              "multiple": false,
+              "non_localizable": false,
+              "unique": false
+            },
+            {
+              "data_type": "text",
+              "display_name": "Description",
+              "uid": "description",
+              "field_metadata": {
+                "description": "",
+                "default_value": "",
+                "multiline": true,
+                "version": 3
+              },
+              "format": "",
+              "error_messages": {
+                "format": ""
+              },
+              "mandatory": false,
+              "multiple": false,
+              "non_localizable": false,
+              "unique": false
+            },
+            {
+              "data_type": "text",
+              "display_name": "Button Text",
+              "uid": "button_text",
+              "field_metadata": {
+                "description": "",
+                "default_value": "",
+                "version": 3
+              },
+              "format": "",
+              "error_messages": {
+                "format": ""
+              },
+              "mandatory": false,
+              "multiple": false,
+              "non_localizable": false,
+              "unique": false
+            },
+            {
+              "data_type": "text",
+              "display_name": "Button Link",
+              "uid": "button_link",
+              "field_metadata": {
+                "description": "",
+                "default_value": "",
+                "version": 3
+              },
+              "format": "",
+              "error_messages": {
+                "format": ""
+              },
+              "mandatory": false,
+              "multiple": false,
+              "non_localizable": false,
+              "unique": false
+            }
+          ]
+        },
+        {
+          "title": "Value Proposition Section",
+          "uid": "value_proposition_section",
+          "schema": [
+            {
+              "data_type": "text",
+              "display_name": "Heading",
+              "uid": "heading",
+              "field_metadata": {
+                "description": "",
+                "default_value": "",
+                "version": 3
+              },
+              "format": "",
+              "error_messages": {
+                "format": ""
+              },
+              "mandatory": false,
+              "multiple": false,
+              "non_localizable": false,
+              "unique": false
+            },
+            {
+              "data_type": "text",
+              "display_name": "Description",
+              "uid": "description",
+              "field_metadata": {
+                "allow_rich_text": true,
+                "description": "",
+                "multiline": false,
+                "rich_text_type": "advanced",
+                "options": [],
+                "version": 3
+              },
+              "mandatory": false,
+              "multiple": false,
+              "non_localizable": false,
+              "unique": false
+            },
+            {
+              "data_type": "file",
+              "display_name": "Image",
+              "uid": "image",
+              "extensions": [],
+              "field_metadata": {
+                "description": "",
+                "rich_text_type": "standard"
+              },
+              "mandatory": false,
+              "multiple": false,
+              "non_localizable": false,
+              "unique": false
+            },
+            {
+              "data_type": "group",
+              "display_name": "Stats",
+              "field_metadata": {
+                "description": "",
+                "instruction": ""
+              },
+              "schema": [
+                {
+                  "data_type": "text",
+                  "display_name": "Stat Number",
+                  "uid": "stat_number",
+                  "field_metadata": {
+                    "description": "",
+                    "default_value": "",
+                    "version": 3
+                  },
+                  "format": "",
+                  "error_messages": {
+                    "format": ""
+                  },
+                  "mandatory": false,
+                  "multiple": false,
+                  "non_localizable": false,
+                  "unique": false
+                },
+                {
+                  "data_type": "text",
+                  "display_name": "Stat Label",
+                  "uid": "stat_label",
+                  "field_metadata": {
+                    "description": "",
+                    "default_value": "",
+                    "version": 3
+                  },
+                  "format": "",
+                  "error_messages": {
+                    "format": ""
+                  },
+                  "mandatory": false,
+                  "multiple": false,
+                  "non_localizable": false,
+                  "unique": false
+                }
+              ],
+              "uid": "stats",
+              "mandatory": false,
+              "multiple": true,
+              "non_localizable": false,
+              "unique": false
+            }
+          ]
+        }
+      ],
+      "multiple": true,
+      "uid": "page_sections",
+      "field_metadata": {
+        "instruction": "",
+        "description": ""
+      },
+      "mandatory": false,
+      "non_localizable": false,
+      "unique": false
+    }
+  ],
+  "uid": "home_page",
+  "DEFAULT_ACL": {
+    "others": {
+      "read": false,
+      "create": false
+    },
+    "users": []
+  },
+  "SYS_ACL": {
+    "others": {
+      "read": false,
+      "create": false,
+      "update": false,
+      "delete": false,
+      "sub_acl": {
+        "read": false,
+        "create": false,
+        "update": false,
+        "delete": false,
+        "publish": false
+      }
+    },
+    "roles": []
+  },
+  "created_at": "2026-05-08T10:30:36.889Z",
+  "updated_at": "2026-05-26T05:05:27.591Z",
+  "inbuilt_class": false,
+  "abilities": {
+    "get_one_object": true,
+    "get_all_objects": true,
+    "create_object": true,
+    "update_object": true,
+    "delete_object": true,
+    "delete_all_objects": true
+  },
+  "last_activity": {},
+  "maintain_revisions": true,
+  "_version": 11
+}

@@ -34,9 +34,16 @@ export default async function PropertyDetailPage(props: {
     );
   }
 
+  const categoryObj = Array.isArray(property.category)
+    ? property.category[0]
+    : property.category;
+  const categoryName = categoryObj
+    ? (categoryObj.name || categoryObj.title || categoryObj.slug || "")
+    : "";
+
   return (
     <main>
-      <PropertyViewTracker slug={slug} />
+      <PropertyViewTracker slug={slug} title={property.title} category={categoryName} />
       {/* Page Header */}
       <div style={{ backgroundColor: "#1e1e1e" }} className="py-16 md:py-20 px-6">
         <div className="max-w-7xl mx-auto">

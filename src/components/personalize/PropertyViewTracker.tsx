@@ -6,9 +6,11 @@ import { trackPropertyView } from "@/lib/personalize/events";
 
 interface PropertyViewTrackerProps {
   slug: string;
+  title?: string;
+  category?: string;
 }
 
-export default function PropertyViewTracker({ slug }: PropertyViewTrackerProps) {
+export default function PropertyViewTracker({ slug, title, category }: PropertyViewTrackerProps) {
   useEffect(() => {
     let isCurrent = true;
 
@@ -35,7 +37,7 @@ export default function PropertyViewTracker({ slug }: PropertyViewTrackerProps) 
         if (!isCurrent) return;
 
         // 3. Fire the property_view event
-        await trackPropertyView(slug);
+        await trackPropertyView(slug, title, category);
 
         // 4. Mark as tracked in sessionStorage
         if (typeof window !== "undefined") {

@@ -1,0 +1,715 @@
+[
+  {
+    "hero_section": {
+      "heading": "Find Your Dream Luxury Home",
+      "_metadata": {
+        "uid": "csfeae067a89ee7da3"
+      },
+      "subheading": "Discover premium villas, luxury apartments, and exclusive investment properties in the most desirable locations. Experience modern living with trusted real estate experts.",
+      "cta_button_text": "Explore Properties",
+      "cta_button_link": "/properties",
+      "background_video": {
+        "uid": "blt875b135a3dcf84a4",
+        "_version": 1,
+        "title": "Hero.mp4",
+        "created_by": "cscb538f6b28f310f8",
+        "updated_by": "cscb538f6b28f310f8",
+        "created_at": "2026-05-08T15:53:22.685Z",
+        "updated_at": "2026-05-08T15:53:22.685Z",
+        "content_type": "video/mp4",
+        "file_size": "51460043",
+        "filename": "Hero.mp4",
+        "ACL": {},
+        "parent_uid": null,
+        "is_dir": false,
+        "tags": [],
+        "publish_details": {
+          "time": "2026-05-08T16:14:10.626Z",
+          "user": "cscb538f6b28f310f8",
+          "environment": "blt37d20f18b6938428",
+          "locale": "en-us"
+        },
+        "url": "https://assets.contentstack.io/v3/assets/blt7b9fa2da753772e4/blt875b135a3dcf84a4/69fe06f274a5e11fcf7014e2/Hero.mp4"
+      }
+    }
+  },
+  {
+    "categories_section": {
+      "section_title": "Explore Our Property Categories",
+      "_metadata": {
+        "uid": "cs28725a7b7157b9bd"
+      },
+      "categories": [
+        {
+          "_content_type_uid": "category",
+          "uid": "bltc4d2d606cc072f4f",
+          "_version": 1,
+          "locale": "en-us",
+          "ACL": {},
+          "_in_progress": false,
+          "created_at": "2026-04-29T17:57:58.095Z",
+          "created_by": "cscb538f6b28f310f8",
+          "description": "Discover luxury rental properties offering comfort, convenience, and premium living experiences in top residential locations.",
+          "image": {
+            "uid": "blt11d628f2096531db",
+            "_version": 1,
+            "title": "img_5.jpg",
+            "created_by": "cscb538f6b28f310f8",
+            "updated_by": "cscb538f6b28f310f8",
+            "created_at": "2026-04-29T17:57:51.977Z",
+            "updated_at": "2026-04-29T17:57:51.977Z",
+            "content_type": "image/jpeg",
+            "file_size": "43347",
+            "filename": "img_5.jpg",
+            "ACL": {},
+            "parent_uid": null,
+            "is_dir": false,
+            "tags": [],
+            "publish_details": {
+              "time": "2026-04-29T17:58:02.644Z",
+              "user": "cscb538f6b28f310f8",
+              "environment": "blt37d20f18b6938428",
+              "locale": "en-us"
+            },
+            "url": "https://images.contentstack.io/v3/assets/blt7b9fa2da753772e4/blt11d628f2096531db/69f2469fa297c82094836094/img_5.jpg"
+          },
+          "name": "Rent",
+          "tags": [],
+          "title": "Rent",
+          "updated_at": "2026-04-29T17:57:58.095Z",
+          "updated_by": "cscb538f6b28f310f8",
+          "publish_details": {
+            "time": "2026-04-29T17:58:02.557Z",
+            "user": "cscb538f6b28f310f8",
+            "environment": "blt37d20f18b6938428",
+            "locale": "en-us"
+          }
+        },
+        {
+          "_content_type_uid": "category",
+          "uid": "blt9fbd6d249c9b2e57",
+          "_version": 1,
+          "locale": "en-us",
+          "ACL": {},
+          "_in_progress": false,
+          "created_at": "2026-04-29T17:56:59.263Z",
+          "created_by": "cscb538f6b28f310f8",
+          "description": "Explore exclusive properties available for purchase, including villas, apartments, and investment-ready premium real estate options.\n",
+          "image": {
+            "uid": "blt9e5c0e213bc4f2b0",
+            "_version": 1,
+            "title": "img_4.jpg",
+            "created_by": "cscb538f6b28f310f8",
+            "updated_by": "cscb538f6b28f310f8",
+            "created_at": "2026-04-29T17:56:50.431Z",
+            "updated_at": "2026-04-29T17:56:50.431Z",
+            "content_type": "image/jpeg",
+            "file_size": "32286",
+            "filename": "img_4.jpg",
+            "ACL": {},
+            "parent_uid": null,
+            "is_dir": false,
+            "tags": [],
+            "publish_details": {
+              "time": "2026-04-29T17:57:04.278Z",
+              "user": "cscb538f6b28f310f8",
+              "environment": "blt37d20f18b6938428",
+              "locale": "en-us"
+            },
+            "url": "https://images.contentstack.io/v3/assets/blt7b9fa2da753772e4/blt9e5c0e213bc4f2b0/69f2466265549f8eea6483f9/img_4.jpg"
+          },
+          "name": "Buy",
+          "tags": [],
+          "title": "Buy",
+          "updated_at": "2026-04-29T17:56:59.263Z",
+          "updated_by": "cscb538f6b28f310f8",
+          "publish_details": {
+            "time": "2026-04-29T17:57:04.185Z",
+            "user": "cscb538f6b28f310f8",
+            "environment": "blt37d20f18b6938428",
+            "locale": "en-us"
+          }
+        },
+        {
+          "_content_type_uid": "category",
+          "uid": "blt94887d39b01ef561",
+          "_version": 1,
+          "locale": "en-us",
+          "ACL": {},
+          "_in_progress": false,
+          "created_at": "2026-04-29T17:55:36.273Z",
+          "created_by": "cscb538f6b28f310f8",
+          "description": "Modern luxury apartments with world-class facilities, skyline views, advanced security, and premium lifestyle experiences.",
+          "image": {
+            "uid": "blt7b70b4a566145f87",
+            "_version": 1,
+            "title": "Apartment.jpg",
+            "created_by": "cscb538f6b28f310f8",
+            "updated_by": "cscb538f6b28f310f8",
+            "created_at": "2026-04-29T17:55:06.090Z",
+            "updated_at": "2026-04-29T17:55:06.090Z",
+            "content_type": "image/jpeg",
+            "file_size": "3157756",
+            "filename": "Apartment.jpg",
+            "ACL": {},
+            "parent_uid": null,
+            "is_dir": false,
+            "tags": [],
+            "publish_details": {
+              "time": "2026-04-29T17:55:41.819Z",
+              "user": "cscb538f6b28f310f8",
+              "environment": "blt37d20f18b6938428",
+              "locale": "en-us"
+            },
+            "url": "https://images.contentstack.io/v3/assets/blt7b9fa2da753772e4/blt7b70b4a566145f87/69f245fac58f74109e257a28/Apartment.jpg"
+          },
+          "name": "Apartments",
+          "tags": [],
+          "title": "Apartments",
+          "updated_at": "2026-04-29T17:55:36.273Z",
+          "updated_by": "cscb538f6b28f310f8",
+          "publish_details": {
+            "time": "2026-04-29T17:55:41.725Z",
+            "user": "cscb538f6b28f310f8",
+            "environment": "blt37d20f18b6938428",
+            "locale": "en-us"
+          }
+        },
+        {
+          "_content_type_uid": "category",
+          "uid": "bltb6a4e398374957da",
+          "_version": 2,
+          "locale": "en-us",
+          "ACL": {},
+          "_in_progress": false,
+          "created_at": "2026-04-28T09:42:54.925Z",
+          "created_by": "cscb538f6b28f310f8",
+          "description": "Premium independent villas with luxury interiors, spacious layouts, private gardens, and high-end amenities for elite living.\n",
+          "image": {
+            "uid": "blt5a0a06d955d55c14",
+            "_version": 1,
+            "title": "img_1.jpg",
+            "created_by": "cscb538f6b28f310f8",
+            "updated_by": "cscb538f6b28f310f8",
+            "created_at": "2026-04-28T09:42:47.073Z",
+            "updated_at": "2026-04-28T09:42:47.073Z",
+            "content_type": "image/jpeg",
+            "file_size": "43208",
+            "filename": "img_1.jpg",
+            "ACL": {},
+            "parent_uid": null,
+            "is_dir": false,
+            "tags": [],
+            "publish_details": {
+              "time": "2026-04-28T09:43:06.611Z",
+              "user": "cscb538f6b28f310f8",
+              "environment": "blt37d20f18b6938428",
+              "locale": "en-us"
+            },
+            "url": "https://images.contentstack.io/v3/assets/blt7b9fa2da753772e4/blt5a0a06d955d55c14/69f08117cb6f051a51965684/img_1.jpg"
+          },
+          "name": "Villas",
+          "tags": [],
+          "title": "Villas",
+          "updated_at": "2026-04-29T17:48:00.371Z",
+          "updated_by": "cscb538f6b28f310f8",
+          "publish_details": {
+            "time": "2026-04-29T17:48:08.019Z",
+            "user": "cscb538f6b28f310f8",
+            "environment": "blt37d20f18b6938428",
+            "locale": "en-us"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "featured_properties_section": {
+      "section_title": "Featured Luxury Properties",
+      "_metadata": {
+        "uid": "cs3001bee9d83d6c0b"
+      },
+      "properties": [
+        {
+          "_content_type_uid": "property",
+          "uid": "blt1eb75e4dd5eca46e",
+          "locale": "en-us",
+          "_version": 6,
+          "ACL": {},
+          "_in_progress": false,
+          "agent": [
+            {
+              "uid": "bltbf6dc627f6316eb6",
+              "_content_type_uid": "agent"
+            }
+          ],
+          "category": [
+            {
+              "uid": "bltb6a4e398374957da",
+              "_content_type_uid": "category"
+            }
+          ],
+          "created_at": "2026-04-29T18:12:10.841Z",
+          "created_by": "cscb538f6b28f310f8",
+          "description": "Luxury beachfront property with private pool, ocean view, and premium architectural design.\n<br/>",
+          "featured": true,
+          "images": [
+            {
+              "uid": "bltb98eec76c842088d",
+              "_version": 1,
+              "title": "Beach house 4.jpg",
+              "created_by": "cscb538f6b28f310f8",
+              "updated_by": "cscb538f6b28f310f8",
+              "created_at": "2026-04-29T18:11:54.386Z",
+              "updated_at": "2026-04-29T18:11:54.386Z",
+              "content_type": "image/jpeg",
+              "file_size": "3877871",
+              "filename": "Beach_house_4.jpg",
+              "ACL": {},
+              "parent_uid": null,
+              "is_dir": false,
+              "tags": [],
+              "publish_details": {
+                "time": "2026-04-29T18:12:16.540Z",
+                "user": "cscb538f6b28f310f8",
+                "environment": "blt37d20f18b6938428",
+                "locale": "en-us"
+              },
+              "url": "https://images.contentstack.io/v3/assets/blt7b9fa2da753772e4/bltb98eec76c842088d/69f249eaf3d0cadf5898f205/Beach_house_4.jpg"
+            },
+            {
+              "uid": "blt7351b373230f18f6",
+              "_version": 1,
+              "title": "Beach house 1.jpg",
+              "created_by": "cscb538f6b28f310f8",
+              "updated_by": "cscb538f6b28f310f8",
+              "created_at": "2026-04-29T18:11:54.798Z",
+              "updated_at": "2026-04-29T18:11:54.798Z",
+              "content_type": "image/jpeg",
+              "file_size": "3980327",
+              "filename": "Beach_house_1.jpg",
+              "ACL": {},
+              "parent_uid": null,
+              "is_dir": false,
+              "tags": [],
+              "publish_details": {
+                "time": "2026-04-29T18:12:16.522Z",
+                "user": "cscb538f6b28f310f8",
+                "environment": "blt37d20f18b6938428",
+                "locale": "en-us"
+              },
+              "url": "https://images.contentstack.io/v3/assets/blt7b9fa2da753772e4/blt7351b373230f18f6/69f249ea3e47cc50911340f7/Beach_house_1.jpg"
+            },
+            {
+              "uid": "blt381c7d9530296dc5",
+              "_version": 1,
+              "title": "Beach house 2.jpg",
+              "created_by": "cscb538f6b28f310f8",
+              "updated_by": "cscb538f6b28f310f8",
+              "created_at": "2026-04-29T18:12:02.460Z",
+              "updated_at": "2026-04-29T18:12:02.460Z",
+              "content_type": "image/jpeg",
+              "file_size": "6478619",
+              "filename": "Beach_house_2.jpg",
+              "ACL": {},
+              "parent_uid": null,
+              "is_dir": false,
+              "tags": [],
+              "publish_details": {
+                "time": "2026-04-29T18:12:16.531Z",
+                "user": "cscb538f6b28f310f8",
+                "environment": "blt37d20f18b6938428",
+                "locale": "en-us"
+              },
+              "url": "https://images.contentstack.io/v3/assets/blt7b9fa2da753772e4/blt381c7d9530296dc5/69f249f2c58f742e2a257a4b/Beach_house_2.jpg"
+            },
+            {
+              "uid": "blt52e781c1e47b382c",
+              "_version": 1,
+              "title": "Beach house 3.jpg",
+              "created_by": "cscb538f6b28f310f8",
+              "updated_by": "cscb538f6b28f310f8",
+              "created_at": "2026-04-29T18:12:07.397Z",
+              "updated_at": "2026-04-29T18:12:07.397Z",
+              "content_type": "image/jpeg",
+              "file_size": "9684382",
+              "filename": "Beach_house_3.jpg",
+              "ACL": {},
+              "parent_uid": null,
+              "is_dir": false,
+              "tags": [],
+              "publish_details": {
+                "time": "2026-04-29T18:12:16.512Z",
+                "user": "cscb538f6b28f310f8",
+                "environment": "blt37d20f18b6938428",
+                "locale": "en-us"
+              },
+              "url": "https://images.contentstack.io/v3/assets/blt7b9fa2da753772e4/blt52e781c1e47b382c/69f249f72c56676ac5c3d561/Beach_house_3.jpg"
+            }
+          ],
+          "location": "Goa",
+          "price": "₹20 Cr",
+          "slug": "beachfront-premium-house",
+          "tags": [],
+          "title": "Beachfront Premium House",
+          "updated_at": "2026-05-19T07:06:48.077Z",
+          "updated_by": "cscb538f6b28f310f8",
+          "vedio_url": "https://www.youtube.com/watch?v=sample3",
+          "publish_details": {
+            "time": "2026-06-04T07:50:07.150Z",
+            "user": "cscb538f6b28f310f8",
+            "environment": "blt37d20f18b6938428",
+            "locale": "en-us"
+          }
+        },
+        {
+          "_content_type_uid": "property",
+          "uid": "blt107d117e345a4125",
+          "locale": "en-us",
+          "_version": 3,
+          "ACL": {},
+          "_in_progress": false,
+          "agent": [
+            {
+              "uid": "blte140ca2051e64d6e",
+              "_content_type_uid": "agent"
+            }
+          ],
+          "category": [
+            {
+              "uid": "blt94887d39b01ef561",
+              "_content_type_uid": "category"
+            }
+          ],
+          "created_at": "2026-04-29T17:46:36.571Z",
+          "created_by": "cscb538f6b28f310f8",
+          "description": "<p>Elegant high-rise apartment with skyline views, premium amenities, and world-class security.<br /></p>",
+          "featured": true,
+          "images": [
+            {
+              "uid": "blt12bb5bf0e92f3029",
+              "_version": 1,
+              "title": "img_8.jpg",
+              "created_by": "cscb538f6b28f310f8",
+              "updated_by": "cscb538f6b28f310f8",
+              "created_at": "2026-04-29T17:58:28.076Z",
+              "updated_at": "2026-04-29T17:58:28.076Z",
+              "content_type": "image/jpeg",
+              "file_size": "30161",
+              "filename": "img_8.jpg",
+              "ACL": {},
+              "parent_uid": null,
+              "is_dir": false,
+              "tags": [],
+              "publish_details": {
+                "time": "2026-04-29T18:01:12.999Z",
+                "user": "cscb538f6b28f310f8",
+                "environment": "blt37d20f18b6938428",
+                "locale": "en-us"
+              },
+              "url": "https://images.contentstack.io/v3/assets/blt7b9fa2da753772e4/blt12bb5bf0e92f3029/69f246c49708ad6eb68c1282/img_8.jpg"
+            },
+            {
+              "uid": "bltbf13c7e729900850",
+              "_version": 1,
+              "title": "skyview 2.jpg",
+              "created_by": "cscb538f6b28f310f8",
+              "updated_by": "cscb538f6b28f310f8",
+              "created_at": "2026-04-29T18:00:19.387Z",
+              "updated_at": "2026-04-29T18:00:19.387Z",
+              "content_type": "image/jpeg",
+              "file_size": "1751372",
+              "filename": "skyview_2.jpg",
+              "ACL": {},
+              "parent_uid": null,
+              "is_dir": false,
+              "tags": [],
+              "publish_details": {
+                "time": "2026-04-29T18:01:12.965Z",
+                "user": "cscb538f6b28f310f8",
+                "environment": "blt37d20f18b6938428",
+                "locale": "en-us"
+              },
+              "url": "https://images.contentstack.io/v3/assets/blt7b9fa2da753772e4/bltbf13c7e729900850/69f2473361d51a3ea7dbeec4/skyview_2.jpg"
+            },
+            {
+              "uid": "blt4ae41e28fe60865b",
+              "_version": 1,
+              "title": "skyview 1.jpg",
+              "created_by": "cscb538f6b28f310f8",
+              "updated_by": "cscb538f6b28f310f8",
+              "created_at": "2026-04-29T18:00:19.731Z",
+              "updated_at": "2026-04-29T18:00:19.731Z",
+              "content_type": "image/jpeg",
+              "file_size": "1945218",
+              "filename": "skyview_1.jpg",
+              "ACL": {},
+              "parent_uid": null,
+              "is_dir": false,
+              "tags": [],
+              "publish_details": {
+                "time": "2026-04-29T18:01:13.015Z",
+                "user": "cscb538f6b28f310f8",
+                "environment": "blt37d20f18b6938428",
+                "locale": "en-us"
+              },
+              "url": "https://images.contentstack.io/v3/assets/blt7b9fa2da753772e4/blt4ae41e28fe60865b/69f2473365549ffca864840a/skyview_1.jpg"
+            },
+            {
+              "uid": "blt986bd957d5acd5b2",
+              "_version": 1,
+              "title": "skyview 4.jpg",
+              "created_by": "cscb538f6b28f310f8",
+              "updated_by": "cscb538f6b28f310f8",
+              "created_at": "2026-04-29T18:00:33.994Z",
+              "updated_at": "2026-04-29T18:00:33.994Z",
+              "content_type": "image/jpeg",
+              "file_size": "2462256",
+              "filename": "skyview_4.jpg",
+              "ACL": {},
+              "parent_uid": null,
+              "is_dir": false,
+              "tags": [],
+              "publish_details": {
+                "time": "2026-04-29T18:01:12.948Z",
+                "user": "cscb538f6b28f310f8",
+                "environment": "blt37d20f18b6938428",
+                "locale": "en-us"
+              },
+              "url": "https://images.contentstack.io/v3/assets/blt7b9fa2da753772e4/blt986bd957d5acd5b2/69f247415ab0e4ce9f3bcb63/skyview_4.jpg"
+            },
+            {
+              "uid": "bltf28cabde07e903bb",
+              "_version": 1,
+              "title": "skyview 3.jpg",
+              "created_by": "cscb538f6b28f310f8",
+              "updated_by": "cscb538f6b28f310f8",
+              "created_at": "2026-04-29T18:00:35.086Z",
+              "updated_at": "2026-04-29T18:00:35.086Z",
+              "content_type": "image/jpeg",
+              "file_size": "3539606",
+              "filename": "skyview_3.jpg",
+              "ACL": {},
+              "parent_uid": null,
+              "is_dir": false,
+              "tags": [],
+              "publish_details": {
+                "time": "2026-04-29T18:01:12.981Z",
+                "user": "cscb538f6b28f310f8",
+                "environment": "blt37d20f18b6938428",
+                "locale": "en-us"
+              },
+              "url": "https://images.contentstack.io/v3/assets/blt7b9fa2da753772e4/bltf28cabde07e903bb/69f2474365549fb73864840e/skyview_3.jpg"
+            }
+          ],
+          "location": "Indiranagar, Bangalore",
+          "price": "₹1.8 Cr",
+          "slug": "skyview-luxury-apartment",
+          "tags": [],
+          "title": "Skyview Luxury Apartment",
+          "updated_at": "2026-04-29T18:08:24.464Z",
+          "updated_by": "cscb538f6b28f310f8",
+          "vedio_url": "https://www.youtube.com/watch?v=sample2",
+          "publish_details": {
+            "time": "2026-04-29T18:08:28.866Z",
+            "user": "cscb538f6b28f310f8",
+            "environment": "blt37d20f18b6938428",
+            "locale": "en-us"
+          }
+        },
+        {
+          "_content_type_uid": "property",
+          "uid": "blt4cc078e6d05336ea",
+          "_version": 4,
+          "locale": "en-us",
+          "ACL": {},
+          "_in_progress": false,
+          "agent": [
+            {
+              "uid": "blt9da2f6dc1d70804f",
+              "_content_type_uid": "agent"
+            }
+          ],
+          "category": [
+            {
+              "uid": "bltb6a4e398374957da",
+              "_content_type_uid": "category"
+            }
+          ],
+          "created_at": "2026-04-28T09:39:15.068Z",
+          "created_by": "cscb538f6b28f310f8",
+          "description": "<p>A premium modern villa located in the heart of Whitefield with luxury interiors, spacious garden area, and smart home features.<br /></p>",
+          "featured": true,
+          "images": [
+            {
+              "uid": "blt97441f3713908168",
+              "_version": 1,
+              "title": "img_1.jpg",
+              "created_by": "cscb538f6b28f310f8",
+              "updated_by": "cscb538f6b28f310f8",
+              "created_at": "2026-04-28T09:43:41.441Z",
+              "updated_at": "2026-04-28T09:43:41.441Z",
+              "content_type": "image/jpeg",
+              "file_size": "43208",
+              "filename": "img_1.jpg",
+              "ACL": {},
+              "parent_uid": null,
+              "is_dir": false,
+              "tags": [],
+              "publish_details": {
+                "time": "2026-04-28T09:44:14.300Z",
+                "user": "cscb538f6b28f310f8",
+                "environment": "blt37d20f18b6938428",
+                "locale": "en-us"
+              },
+              "url": "https://images.contentstack.io/v3/assets/blt7b9fa2da753772e4/blt97441f3713908168/69f0814dfe0735135be0a7bf/img_1.jpg"
+            }
+          ],
+          "location": "Whitefield, Bangalore",
+          "price": "₹2.5 Cr",
+          "slug": "modern-villa-bangalore",
+          "tags": [],
+          "title": "Modern Villa Bangalore",
+          "updated_at": "2026-04-28T10:00:18.289Z",
+          "updated_by": "cscb538f6b28f310f8",
+          "vedio_url": "https://www.youtube.com/watch?v=sample1",
+          "publish_details": {
+            "time": "2026-04-28T10:00:23.418Z",
+            "user": "cscb538f6b28f310f8",
+            "environment": "blt37d20f18b6938428",
+            "locale": "en-us"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "achievement_section": {
+      "section_title": "Our Achievements",
+      "_metadata": {
+        "uid": "cs99a466f703bc7237"
+      },
+      "achievements": [
+        {
+          "_content_type_uid": "achievement",
+          "uid": "bltb804e4c8f55c8614",
+          "_version": 1,
+          "locale": "en-us",
+          "ACL": {},
+          "_in_progress": false,
+          "created_at": "2026-04-29T07:46:10.205Z",
+          "created_by": "cscb538f6b28f310f8",
+          "description": "Successfully closed more than 500 luxury real estate transactions.",
+          "image": null,
+          "tags": [],
+          "title": "500+ Premium Properties Sold",
+          "updated_at": "2026-04-29T07:46:10.205Z",
+          "updated_by": "cscb538f6b28f310f8",
+          "year": "2025",
+          "publish_details": {
+            "time": "2026-04-29T07:46:14.805Z",
+            "user": "cscb538f6b28f310f8",
+            "environment": "blt37d20f18b6938428",
+            "locale": "en-us"
+          }
+        },
+        {
+          "_content_type_uid": "achievement",
+          "uid": "bltc0019462fce60da1",
+          "_version": 1,
+          "locale": "en-us",
+          "ACL": {},
+          "_in_progress": false,
+          "created_at": "2026-04-29T07:44:59.299Z",
+          "created_by": "cscb538f6b28f310f8",
+          "description": "Recognized for delivering premium real estate experiences across India.",
+          "image": null,
+          "tags": [],
+          "title": "Best Luxury Real Estate Platform",
+          "updated_at": "2026-04-29T07:44:59.299Z",
+          "updated_by": "cscb538f6b28f310f8",
+          "year": "2024",
+          "publish_details": {
+            "time": "2026-04-29T07:45:08.771Z",
+            "user": "cscb538f6b28f310f8",
+            "environment": "blt37d20f18b6938428",
+            "locale": "en-us"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "cta_banner_section": {
+      "heading": "Be a part of Our Premium Property Network",
+      "_metadata": {
+        "uid": "cs290ac16f3e11935d"
+      },
+      "description": "Whether you want to buy, rent, or sell luxury properties, our expert team helps you make the right real estate decisions with confidence and trust.",
+      "button_text": "Contact Our Experts",
+      "button_link": "/contact"
+    }
+  },
+  {
+    "value_proposition_section": {
+      "heading": "Let’s Find the Perfect Property for You",
+      "_metadata": {
+        "uid": "cs687d1a5b794efc16"
+      },
+      "description": "<p>We connect buyers, sellers, and investors with premium real estate opportunities through trusted agents, verified listings, and a seamless digital experience.</p>",
+      "image": {
+        "uid": "bltf8806b92d2e8fbd0",
+        "_version": 1,
+        "title": "img_5.jpg",
+        "created_by": "cscb538f6b28f310f8",
+        "updated_by": "cscb538f6b28f310f8",
+        "created_at": "2026-05-08T16:09:04.407Z",
+        "updated_at": "2026-05-08T16:09:04.407Z",
+        "content_type": "image/jpeg",
+        "file_size": "43347",
+        "filename": "img_5.jpg",
+        "ACL": {},
+        "parent_uid": null,
+        "is_dir": false,
+        "tags": [],
+        "publish_details": {
+          "time": "2026-05-08T16:14:10.607Z",
+          "user": "cscb538f6b28f310f8",
+          "environment": "blt37d20f18b6938428",
+          "locale": "en-us"
+        },
+        "url": "https://images.contentstack.io/v3/assets/blt7b9fa2da753772e4/bltf8806b92d2e8fbd0/69fe0aa073cbe345efee2d8a/img_5.jpg"
+      },
+      "stats": [
+        {
+          "stat_number": "3298",
+          "_metadata": {
+            "uid": "cs4ccb54c2ddc24a68"
+          },
+          "stat_label": "Buy Properties"
+        },
+        {
+          "stat_number": "2181",
+          "_metadata": {
+            "uid": "cs36e71459d9efa431"
+          },
+          "stat_label": "Sell Properties"
+        },
+        {
+          "stat_number": "9316",
+          "_metadata": {
+            "uid": "cs3b733545de365bbf"
+          },
+          "stat_label": "All Properties"
+        },
+        {
+          "stat_number": "7191",
+          "_metadata": {
+            "uid": "csc2ea8e00c0883156"
+          },
+          "stat_label": "Expert Agents"
+        }
+      ]
+    }
+  }
+]
