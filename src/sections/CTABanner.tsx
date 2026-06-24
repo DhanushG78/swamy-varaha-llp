@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { trackCTAClick } from "@/lib/personalize/events";
 
 const CTABanner = ({ data, isHero = false }: { data: any; isHero?: boolean }) => {
   const heading = data?.cta_heading || data?.heading || "Be a part of our growing real estate agents";
@@ -79,6 +82,7 @@ const CTABanner = ({ data, isHero = false }: { data: any; isHero?: boolean }) =>
           </div>
           <Link
             href={btnLink}
+            onClick={() => trackCTAClick(btnText)}
             className="inline-block px-8 py-3 bg-white font-medium text-sm transition-all duration-300 hover:bg-gray-100 hover:scale-[1.02] shadow-lg whitespace-nowrap z-30"
             style={{ color: "#e63946" }}
           >
@@ -121,6 +125,7 @@ const CTABanner = ({ data, isHero = false }: { data: any; isHero?: boolean }) =>
         </div>
         <Link
           href={btnLink}
+          onClick={() => trackCTAClick(btnText)}
           className="inline-block px-8 py-3 bg-white font-medium text-sm transition-all duration-300 hover:bg-gray-100 hover:scale-[1.02] shadow-lg whitespace-nowrap"
           style={{ color: "#e63946" }}
         >

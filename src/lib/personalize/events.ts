@@ -43,6 +43,30 @@ export async function trackCategoryClick(categoryName: string): Promise<void> {
   }
 }
 
+/**
+ * Tracks the "cta_click" event for a specific CTA button.
+ * 
+ * @param ctaName - The display label of the CTA button being clicked.
+ */
+export async function trackCTAClick(ctaName: string): Promise<void> {
+  try {
+    const sdk = await getPersonalizeSdk();
+    if (!sdk) {
+      console.error("[Personalize Event] SDK initialization failed");
+      return;
+    }
+    
+    if (typeof sdk.triggerEvent !== "function") {
+      console.error("[Personalize Event] SDK initialization failed");
+      return;
+    }
+    
+    await sdk.triggerEvent("cta_click");
+    console.log(`[Personalize Event] cta_click fired: ${ctaName}`);
+  } catch (error) {
+    console.error("[Personalize Event] SDK initialization failed");
+  }
+}
+
 // Future expansion methods (Do NOT implement yet):
-// export async function trackCTAClick(...): Promise<void> {}
 // export async function trackContactAgent(...): Promise<void> {}
