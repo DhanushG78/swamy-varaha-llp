@@ -46,9 +46,25 @@ export default async function Home(props: { searchParams: Promise<any> }) {
     };
   }
 
+  const isPersonalized = !!searchParams?.personalize_variants || 
+                         !!searchParams?.property_interest || 
+                         (homePage.publish_details?.variants && Object.keys(homePage.publish_details.variants).length > 0);
+
+  let sections = [...homePage.page_sections];
+  if (isPersonalized) {
+    const catIndex = sections.findIndex((s: any) => s.categories_section);
+    const featIndex = sections.findIndex((s: any) => s.featured_properties_section);
+    if (catIndex !== -1 && featIndex !== -1) {
+      const [categoriesSection] = sections.splice(catIndex, 1);
+      const newFeatIndex = sections.findIndex((s: any) => s.featured_properties_section);
+      sections.splice(newFeatIndex + 1, 0, categoriesSection);
+      console.log("[CMS] Personalized experience active: Moved Categories section below Featured Properties.");
+    }
+  }
+
   return (
     <main>
-      {homePage.page_sections.map((section: any, index: number) => {
+      {sections.map((section: any, index: number) => {
         if (section.hero_section) {
           if (isCtaExperienceActive) {
             console.log("[CTA Hero Debug] Rendering CTA Banner as Hero wrapper:", JSON.stringify(ctaMergedData, null, 2));
