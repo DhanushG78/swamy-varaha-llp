@@ -179,39 +179,53 @@ export default function SearchFilter({ properties }: Props) {
         />
 
         {/* Category dropdown */}
-        <select
-          value={category}
-          onChange={(e) => setCategory(e.target.value)}
-          className="px-4 py-3 text-sm bg-white border border-gray-200 outline-none appearance-none cursor-pointer transition-colors duration-200 focus:border-gray-400"
-          style={{ color: "#343a40" }}
-        >
-          <option value="">All Categories</option>
-          {categories.map((cat) => (
-            <option key={cat} value={cat}>
-              {cat.charAt(0).toUpperCase() + cat.slice(1)}
-            </option>
-          ))}
-        </select>
+        <div className="relative">
+          <select
+            value={category}
+            onChange={(e) => setCategory(e.target.value)}
+            className="w-full px-4 py-3 pr-10 text-sm bg-white border border-gray-200 outline-none appearance-none cursor-pointer transition-colors duration-200 focus:border-gray-400"
+            style={{ color: "#343a40" }}
+          >
+            <option value="">All Categories</option>
+            {categories.map((cat) => (
+              <option key={cat} value={cat}>
+                {cat.charAt(0).toUpperCase() + cat.slice(1)}
+              </option>
+            ))}
+          </select>
+          <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-gray-500">
+            <svg className="w-4 h-4 fill-current" viewBox="0 0 20 20">
+              <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
+            </svg>
+          </div>
+        </div>
 
         {/* Price range dropdown */}
-        <select
-          value={priceRange}
-          onChange={(e) => setPriceRange(e.target.value as PriceRange)}
-          className="px-4 py-3 text-sm bg-white border border-gray-200 outline-none appearance-none cursor-pointer transition-colors duration-200 focus:border-gray-400"
-          style={{ color: "#343a40" }}
-        >
-          {PRICE_RANGES.map((r) => (
-            <option key={r.value} value={r.value}>
-              {r.label}
-            </option>
-          ))}
-        </select>
+        <div className="relative">
+          <select
+            value={priceRange}
+            onChange={(e) => setPriceRange(e.target.value as PriceRange)}
+            className="w-full px-4 py-3 pr-10 text-sm bg-white border border-gray-200 outline-none appearance-none cursor-pointer transition-colors duration-200 focus:border-gray-400"
+            style={{ color: "#343a40" }}
+          >
+            {PRICE_RANGES.map((r) => (
+              <option key={r.value} value={r.value}>
+                {r.label}
+              </option>
+            ))}
+          </select>
+          <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-gray-500">
+            <svg className="w-4 h-4 fill-current" viewBox="0 0 20 20">
+              <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
+            </svg>
+          </div>
+        </div>
 
         {/* Reset button */}
         <button
           onClick={handleReset}
           className="px-6 py-3 text-sm font-medium text-white transition-colors duration-200 hover:opacity-90 cursor-pointer"
-          style={{ backgroundColor: "#e63946" }}
+          style={{ backgroundColor: "#0a2240" }}
         >
           Reset Filters
         </button>
@@ -241,7 +255,7 @@ export default function SearchFilter({ properties }: Props) {
             <button
               onClick={handleReset}
               className="mt-4 px-5 py-2 text-sm font-medium text-white transition-colors duration-200 cursor-pointer"
-              style={{ backgroundColor: "#e63946" }}
+              style={{ backgroundColor: "#0a2240" }}
             >
               Clear all filters
             </button>

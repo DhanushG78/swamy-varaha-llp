@@ -6,14 +6,14 @@ const Footer = async () => {
   if (!settings) return null;
 
   return (
-    <footer style={{ backgroundColor: "#111111" }}>
+    <footer style={{ backgroundColor: "#061529" }}>
       <div className="max-w-7xl mx-auto px-6 py-16">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
           {/* Contact Column */}
           <div>
             <h3
               className="text-sm font-bold text-white uppercase tracking-wider mb-5 inline-block px-3 py-1"
-              style={{ backgroundColor: "#343a40" }}
+              style={{ backgroundColor: "#0a2240" }}
             >
               Contact
             </h3>
@@ -41,7 +41,7 @@ const Footer = async () => {
           <div>
             <h3
               className="text-sm font-bold text-white uppercase tracking-wider mb-5 inline-block px-3 py-1"
-              style={{ backgroundColor: "#343a40" }}
+              style={{ backgroundColor: "#0a2240" }}
             >
               Sources
             </h3>
@@ -83,7 +83,7 @@ const Footer = async () => {
           <div>
             <h3
               className="text-sm font-bold text-white uppercase tracking-wider mb-5 inline-block px-3 py-1"
-              style={{ backgroundColor: "#343a40" }}
+              style={{ backgroundColor: "#0a2240" }}
             >
               Links
             </h3>
@@ -136,7 +136,7 @@ const Footer = async () => {
       <div className="border-t border-gray-800">
         <div className="max-w-7xl mx-auto px-6 py-5">
           <p className="text-xs text-gray-500 text-center">
-            &copy; {new Date().getFullYear()} {settings.company_name || "Swamy Varaha LLP"}. All rights reserved.
+            &copy; {new Date().getFullYear()} Sothibes Reality. All rights reserved.
           </p>
         </div>
       </div>

@@ -18,7 +18,7 @@ export default async function AboutPage(props: { searchParams: Promise<any> }) {
   return (
     <main>
       {/* Page Header */}
-      <div style={{ backgroundColor: "#1e1e1e" }} className="py-16 md:py-20 px-6">
+      <div style={{ backgroundColor: "#061529" }} className="py-16 md:py-20 px-6">
         <div className="max-w-7xl mx-auto">
           <h1
             className="font-medium text-white"
@@ -116,7 +116,7 @@ export default async function AboutPage(props: { searchParams: Promise<any> }) {
                 >
                   <div
                     className="text-xs font-bold uppercase tracking-wider mb-2"
-                    style={{ color: "#e63946" }}
+                    style={{ color: "#0a2240" }}
                   >
                     {item.year}
                   </div>

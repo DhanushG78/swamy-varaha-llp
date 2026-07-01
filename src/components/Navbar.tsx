@@ -30,17 +30,17 @@ const Navbar = ({ categories = [] }: { categories?: any[] }) => {
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled ? "shadow-lg" : ""
       }`}
-      style={{ backgroundColor: "#1e1e1e" }}
+      style={{ backgroundColor: "#061529" }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Brand */}
           <Link href="/" className="flex items-center gap-1 group">
             <span className="text-xl font-bold text-white tracking-wide">
-              Swamy Varaha
+              Sothibes
             </span>
-            <span className="text-xl font-light tracking-wide" style={{ color: "#e63946" }}>
-              LLP
+            <span className="text-xl font-light tracking-wide text-gray-300">
+              Reality
             </span>
           </Link>
 
@@ -55,7 +55,7 @@ const Navbar = ({ categories = [] }: { categories?: any[] }) => {
                 {link.label}
                 <span
                   className="absolute bottom-0 left-3 right-3 h-[2px] scale-x-0 group-hover:scale-x-100 transition-transform duration-200 origin-left"
-                  style={{ backgroundColor: "#e63946" }}
+                  style={{ backgroundColor: "#0a2240" }}
                 />
               </Link>
             ))}
@@ -78,7 +78,7 @@ const Navbar = ({ categories = [] }: { categories?: any[] }) => {
                 </svg>
                 <span
                   className="absolute bottom-0 left-3 right-3 h-[2px] scale-x-0 group-hover:scale-x-100 transition-transform duration-200 origin-left"
-                  style={{ backgroundColor: "#e63946" }}
+                  style={{ backgroundColor: "#0a2240" }}
                 />
               </button>
 
@@ -87,7 +87,7 @@ const Navbar = ({ categories = [] }: { categories?: any[] }) => {
                 className={`absolute top-full left-0 mt-0 w-48 rounded-md shadow-lg py-1 transition-all duration-200 origin-top ${
                   categoriesOpen ? "opacity-100 scale-y-100" : "opacity-0 scale-y-0 pointer-events-none"
                 }`}
-                style={{ backgroundColor: "#1e1e1e", border: "1px solid #333" }}
+                style={{ backgroundColor: "#061529", border: "1px solid #112233" }}
               >
                 {categories.map((cat) => (
                   <Link
@@ -111,7 +111,7 @@ const Navbar = ({ categories = [] }: { categories?: any[] }) => {
                 {link.label}
                 <span
                   className="absolute bottom-0 left-3 right-3 h-[2px] scale-x-0 group-hover:scale-x-100 transition-transform duration-200 origin-left"
-                  style={{ backgroundColor: "#e63946" }}
+                  style={{ backgroundColor: "#0a2240" }}
                 />
               </Link>
             ))}
@@ -147,7 +147,7 @@ const Navbar = ({ categories = [] }: { categories?: any[] }) => {
         className={`lg:hidden overflow-hidden transition-all duration-300 ${
           mobileOpen ? "max-h-[500px] border-t border-gray-700" : "max-h-0"
         }`}
-        style={{ backgroundColor: "#1e1e1e" }}
+        style={{ backgroundColor: "#061529" }}
       >
         <div className="px-4 py-3 space-y-1">
           {staticNavLinks.map((link) => (

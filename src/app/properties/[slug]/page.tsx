@@ -17,7 +17,7 @@ export default async function PropertyDetailPage(props: {
   if (!property) {
     return (
       <main className="px-6 py-20 text-center">
-        <h1 className="text-2xl font-medium" style={{ color: "#e63946" }}>
+        <h1 className="text-2xl font-medium" style={{ color: "#0a2240" }}>
           Property Not Found
         </h1>
         <p className="text-sm mt-3" style={{ color: "#6c757d" }}>
@@ -26,7 +26,7 @@ export default async function PropertyDetailPage(props: {
         <Link
           href="/properties"
           className="inline-block mt-6 px-6 py-3 text-sm font-medium text-white"
-          style={{ backgroundColor: "#e63946" }}
+          style={{ backgroundColor: "#0a2240" }}
         >
           Browse Properties
         </Link>
@@ -45,7 +45,7 @@ export default async function PropertyDetailPage(props: {
     <main>
       <PropertyViewTracker slug={slug} title={property.title} category={categoryName} />
       {/* Page Header */}
-      <div style={{ backgroundColor: "#1e1e1e" }} className="py-16 md:py-20 px-6">
+      <div style={{ backgroundColor: "#061529" }} className="py-16 md:py-20 px-6">
         <div className="max-w-7xl mx-auto">
           <h1
             className="font-medium text-white mb-2"
@@ -62,7 +62,7 @@ export default async function PropertyDetailPage(props: {
         <div>
           <span
             className="text-2xl font-medium"
-            style={{ color: "#e63946" }}
+            style={{ color: "#0a2240" }}
           >
             {property.price}
           </span>
@@ -129,7 +129,7 @@ export default async function PropertyDetailPage(props: {
                 </h3>
                 <p
                   className="text-xs font-bold uppercase tracking-wider mb-3"
-                  style={{ color: "#e63946" }}
+                  style={{ color: "#0a2240" }}
                 >
                   {agent.specialization}
                 </p>
@@ -152,7 +152,7 @@ export default async function PropertyDetailPage(props: {
           <Link
             href="/properties"
             className="text-sm font-medium transition-colors duration-200"
-            style={{ color: "#e63946" }}
+            style={{ color: "#0a2240" }}
           >
             &larr; Back to all properties
           </Link>

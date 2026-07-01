@@ -28,7 +28,7 @@ const HomeAgents = async ({ searchParams }: { searchParams?: any }) => {
           <Link
             href="/agents"
             className="text-sm font-medium hidden md:inline-block transition-colors duration-200"
-            style={{ color: "#e63946" }}
+            style={{ color: "#0a2240" }}
           >
             View all agents &rarr;
           </Link>
@@ -55,7 +55,7 @@ const HomeAgents = async ({ searchParams }: { searchParams?: any }) => {
                 <Link
                   href="/agents"
                   className="transition-colors duration-200 hover:underline"
-                  style={{ color: "#e63946" }}
+                  style={{ color: "#0a2240" }}
                 >
                   {agent.name}
                 </Link>
@@ -84,7 +84,7 @@ const HomeAgents = async ({ searchParams }: { searchParams?: any }) => {
           <Link
             href="/agents"
             className="text-sm font-medium"
-            style={{ color: "#e63946" }}
+            style={{ color: "#0a2240" }}
           >
             View all agents &rarr;
           </Link>

@@ -100,7 +100,7 @@ const Hero = ({ data }: { data: any }) => {
           <button
             onClick={handleSearch}
             className="px-6 py-3 text-sm font-medium text-white transition-colors duration-200 cursor-pointer"
-            style={{ backgroundColor: "#e63946" }}
+            style={{ backgroundColor: "#0a2240" }}
           >
             {btnText}
           </button>

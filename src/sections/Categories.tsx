@@ -52,7 +52,7 @@ const Categories = ({ data }: { data: any }) => {
                 <Link
                   href={`/properties?category=${slug}`}
                   className="text-sm font-medium transition-colors duration-200 group-hover:underline"
-                  style={{ color: "#e63946" }}
+                  style={{ color: "#0a2240" }}
                 >
                   Learn More &rarr;
                 </Link>

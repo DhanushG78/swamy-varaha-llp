@@ -27,12 +27,12 @@ const AchievementSection = ({ data }: { data: any }) => {
             return (
               <div
                 key={achiev.uid || i}
-                className="group relative bg-[#262626] border border-white/5 rounded-xl p-8 hover:border-accent-red/30 transition-all duration-300 hover:shadow-[0_10px_30px_rgba(0,0,0,0.3)] flex flex-col h-full animate-fade-in-up"
+                className="group relative bg-[#262626] border border-white/5 rounded-xl p-8 hover:border-white/20 transition-all duration-300 hover:shadow-[0_10px_30px_rgba(0,0,0,0.3)] flex flex-col h-full animate-fade-in-up"
                 style={{ animationDelay: `${i * 100}ms` }}
               >
                 {/* Image / Icon Header */}
                 {imageUrl && (
-                  <div className="mb-6 w-16 h-16 flex items-center justify-center rounded-lg bg-white/5 p-2 group-hover:bg-accent-red/10 transition-colors duration-300 overflow-hidden">
+                  <div className="mb-6 w-16 h-16 flex items-center justify-center rounded-lg bg-white/5 p-2 group-hover:bg-white/10 transition-colors duration-300 overflow-hidden">
                     <img
                       src={imageUrl}
                       alt={heading || "Achievement image"}
@@ -43,14 +43,14 @@ const AchievementSection = ({ data }: { data: any }) => {
 
                 {/* Year Badge */}
                 {year && (
-                  <span className="inline-block px-3 py-1 text-xs font-semibold uppercase tracking-wider text-accent-red bg-accent-red/10 rounded-full w-fit mb-4">
+                  <span className="inline-block px-3 py-1 text-xs font-semibold uppercase tracking-wider text-white bg-white/10 rounded-full w-fit mb-4">
                     {year}
                   </span>
                 )}
 
                 {/* Title */}
                 {heading && (
-                  <h3 className="text-xl font-semibold text-white mb-3 group-hover:text-accent-red transition-colors duration-300 leading-snug">
+                  <h3 className="text-xl font-semibold text-white mb-3 transition-colors duration-300 leading-snug">
                     {heading}
                   </h3>
                 )}
@@ -64,7 +64,7 @@ const AchievementSection = ({ data }: { data: any }) => {
                 )}
 
                 {/* Decorative hover gradient border effect */}
-                <div className="absolute inset-0 rounded-xl bg-gradient-to-tr from-accent-red/0 via-accent-red/0 to-accent-red/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+                <div className="absolute inset-0 rounded-xl bg-gradient-to-tr from-white/0 via-white/0 to-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
               </div>
             );
           })}

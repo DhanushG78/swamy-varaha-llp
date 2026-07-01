@@ -57,26 +57,16 @@ const ValueProposition = ({ data }: { data: any }) => {
               />
             )}
 
-            {/* Icon callouts */}
-            <div className="space-y-5">
+            {/* Enterprise Stats Grid */}
+            <div className="grid grid-cols-2 gap-x-6 gap-y-8 mt-10 pt-6 border-t border-gray-100">
               {stats.map((stat: any, i: number) => (
-                <div key={i} className="flex items-start gap-4">
-                  <div
-                    className="w-10 h-10 flex items-center justify-center rounded-full flex-shrink-0"
-                    style={{ backgroundColor: "#e63946" }}
-                  >
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" /><polyline points="9 22 9 12 15 12 15 22" />
-                    </svg>
-                  </div>
-                  <div>
-                    <h4 className="text-sm font-medium" style={{ color: "#343a40" }}>
-                      {stat.stat_number}
-                    </h4>
-                    <p className="text-sm" style={{ color: "#6c757d" }}>
-                      {stat.stat_label}
-                    </p>
-                  </div>
+                <div key={i} className="flex flex-col border-l-[3px] pl-4 border-[#0a2240]/20 hover:border-[#0a2240] transition-colors duration-300">
+                  <h4 className="text-2xl md:text-3xl font-semibold tracking-tight text-gray-900">
+                    {stat.stat_number}
+                  </h4>
+                  <p className="text-[13px] uppercase tracking-wider font-medium text-gray-500 mt-1.5">
+                    {stat.stat_label}
+                  </p>
                 </div>
               ))}
             </div>

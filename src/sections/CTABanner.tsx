@@ -84,7 +84,7 @@ const CTABanner = ({ data, isHero = false }: { data: any; isHero?: boolean }) =>
             href={btnLink}
             onClick={() => trackCTAClick(btnText, btnLink)}
             className="inline-block px-8 py-3 bg-white font-medium text-sm transition-all duration-300 hover:bg-gray-100 hover:scale-[1.02] shadow-lg whitespace-nowrap z-30"
-            style={{ color: "#e63946" }}
+            style={{ color: "#0a2240" }}
           >
             {btnText}
           </Link>
@@ -95,7 +95,7 @@ const CTABanner = ({ data, isHero = false }: { data: any; isHero?: boolean }) =>
 
   return (
     <section 
-      style={isHero ? { backgroundColor: "#e63946", height: "100vh", marginTop: "-4rem" } : { backgroundColor: "#e63946" }} 
+      style={isHero ? { backgroundColor: "#0a2240", height: "100vh", marginTop: "-4rem" } : { backgroundColor: "#0a2240" }} 
       className={isHero ? "flex items-center justify-center" : "py-12 md:py-16"}
     >
       <div 
@@ -127,7 +127,7 @@ const CTABanner = ({ data, isHero = false }: { data: any; isHero?: boolean }) =>
           href={btnLink}
           onClick={() => trackCTAClick(btnText, btnLink)}
           className="inline-block px-8 py-3 bg-white font-medium text-sm transition-all duration-300 hover:bg-gray-100 hover:scale-[1.02] shadow-lg whitespace-nowrap"
-          style={{ color: "#e63946" }}
+          style={{ color: "#0a2240" }}
         >
           {btnText}
         </Link>

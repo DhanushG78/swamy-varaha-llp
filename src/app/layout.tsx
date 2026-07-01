@@ -9,9 +9,9 @@ import PersonalizeInitializer from "@/components/personalize/PersonalizeInitiali
 export const dynamic = "force-dynamic";
 
 export const metadata = {
-  title: "Swamy Varaha LLP - Premium Real Estate",
+  title: "Sothibes Reality - Premium Real Estate",
   description:
-    "Discover the world's most exceptional properties. Buy, rent, or sell luxury homes with Swamy Varaha LLP.",
+    "Discover the world's most exceptional properties. Buy, rent, or sell luxury homes with Sothibes Reality.",
 };
 
 export default async function RootLayout({

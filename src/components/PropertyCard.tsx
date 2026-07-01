@@ -34,7 +34,7 @@ const PropertyCard = ({
         {/* Content */}
         <div className="p-5">
           {/* Price */}
-          <p className="text-sm font-medium mb-2" style={{ color: "#e63946" }}>
+          <p className="text-sm font-medium mb-2" style={{ color: "#0a2240" }}>
             {price}
           </p>
 
@@ -58,7 +58,7 @@ const PropertyCard = ({
           {/* CTA */}
           <span
             className="inline-block text-sm font-medium group-hover:underline transition-colors duration-200"
-            style={{ color: "#e63946" }}
+            style={{ color: "#0a2240" }}
           >
             See details &rarr;
           </span>

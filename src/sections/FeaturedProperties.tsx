@@ -33,7 +33,7 @@ const FeaturedProperties = ({ data }: { data: any }) => {
           <Link
             href="/properties"
             className="text-sm font-medium hidden md:inline-block transition-colors duration-200"
-            style={{ color: "#e63946" }}
+            style={{ color: "#0a2240" }}
           >
             View all properties &rarr;
           </Link>
@@ -58,7 +58,7 @@ const FeaturedProperties = ({ data }: { data: any }) => {
           <Link
             href="/properties"
             className="text-sm font-medium"
-            style={{ color: "#e63946" }}
+            style={{ color: "#0a2240" }}
           >
             View all properties &rarr;
           </Link>
