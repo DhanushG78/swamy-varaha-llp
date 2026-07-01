@@ -47,11 +47,6 @@ const Hero = ({ data }: { data: any }) => {
   const subheading = data?.subheading || "";
   const btnText = "Search";
 
-  // Diagnostic logging
-  console.log(`[Hero Debug] Heading: "${heading}"`);
-  console.log(`[Hero Debug] Button: "${btnText}"`);
-  console.log(`[Hero Debug] Video: "${videoUrl}"`);
-
   return (
     <section
       className="relative w-full flex items-center justify-center"

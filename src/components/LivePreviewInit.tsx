@@ -9,7 +9,6 @@ export default function LivePreviewInit() {
 
   useEffect(() => {
     const handleUpdate = () => {
-      console.log("[LivePreviewInit] Received update event. Refreshing router data...");
       router.refresh();
     };
 

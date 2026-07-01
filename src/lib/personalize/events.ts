@@ -32,11 +32,6 @@ export async function trackPropertyView(slug: string, title?: string, category?:
       property_title: title || '',
       property_category: category || '',
     });
-    console.log('[GTM Event] property_view pushed', {
-      property_slug: slug,
-      property_title: title || '',
-      property_category: category || '',
-    });
   }
 }
 
@@ -59,16 +54,12 @@ export async function trackCategoryClick(categoryName: string): Promise<void> {
     }
     
     await sdk.triggerEvent("category_click");
-    console.log(`[Personalize Event] category_click fired: ${categoryName}`);
 
     // Push to GTM dataLayer
     if (typeof window !== "undefined") {
       window.dataLayer = window.dataLayer || [];
       window.dataLayer.push({
         event: 'category_click',
-        category_name: categoryName,
-      });
-      console.log('[GTM Event] category_click pushed', {
         category_name: categoryName,
       });
     }
@@ -96,17 +87,12 @@ export async function trackCTAClick(ctaText: string, ctaUrl: string = ''): Promi
     }
     
     await sdk.triggerEvent("cta_click");
-    console.log(`[Personalize Event] cta_click fired: ${ctaText}`);
 
     // Push to GTM dataLayer
     if (typeof window !== "undefined") {
       window.dataLayer = window.dataLayer || [];
       window.dataLayer.push({
         event: 'cta_click',
-        cta_text: ctaText,
-        cta_url: ctaUrl,
-      });
-      console.log('[GTM Event] cta_click pushed', {
         cta_text: ctaText,
         cta_url: ctaUrl,
       });

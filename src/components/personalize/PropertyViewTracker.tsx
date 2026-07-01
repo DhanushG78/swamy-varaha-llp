@@ -17,9 +17,7 @@ export default function PropertyViewTracker({ slug, title, category }: PropertyV
     const executeTracking = async () => {
       const sessionKey = `property-view-${slug}`;
 
-      // 1. Session Storage Guard to prevent duplicates
       if (typeof window !== "undefined" && sessionStorage.getItem(sessionKey)) {
-        console.log(`[Personalize Event] property_view skipped (already tracked): ${slug}`);
         return;
       }
 
@@ -31,8 +29,6 @@ export default function PropertyViewTracker({ slug, title, category }: PropertyV
           return;
         }
 
-        console.log("[Personalize Event] SDK initialized");
-
         // Prevent firing if component unmounted while SDK was initializing
         if (!isCurrent) return;
 
@@ -43,8 +39,6 @@ export default function PropertyViewTracker({ slug, title, category }: PropertyV
         if (typeof window !== "undefined") {
           sessionStorage.setItem(sessionKey, "true");
         }
-
-        console.log(`[Personalize Event] property_view fired: ${slug}`);
       } catch (error: any) {
         console.error(`[Personalize Event] SDK initialization failed: ${error?.message || error}`);
       }

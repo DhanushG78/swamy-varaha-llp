@@ -58,7 +58,6 @@ export default async function Home(props: { searchParams: Promise<any> }) {
       const [categoriesSection] = sections.splice(catIndex, 1);
       const newFeatIndex = sections.findIndex((s: any) => s.featured_properties_section);
       sections.splice(newFeatIndex + 1, 0, categoriesSection);
-      console.log("[CMS] Personalized experience active: Moved Categories section below Featured Properties.");
     }
   }
 
@@ -67,7 +66,6 @@ export default async function Home(props: { searchParams: Promise<any> }) {
       {sections.map((section: any, index: number) => {
         if (section.hero_section) {
           if (isCtaExperienceActive) {
-            console.log("[CTA Hero Debug] Rendering CTA Banner as Hero wrapper:", JSON.stringify(ctaMergedData, null, 2));
             return <CTABanner key={`cta-hero-${index}`} data={ctaMergedData} isHero={true} />;
           }
           return <Hero key={`hero-${index}`} data={section.hero_section} />;
@@ -82,7 +80,6 @@ export default async function Home(props: { searchParams: Promise<any> }) {
           return <AchievementSection key={`achiev-${index}`} data={section.achievement_section} />;
         }
         if (section.cta_banner_section) {
-          console.log("[CTA Section Debug] Rendering bottom CTA Banner (constant across all variants):", JSON.stringify(section.cta_banner_section, null, 2));
           const overriddenCta = {
             ...section.cta_banner_section,
             button_link: "/agents",

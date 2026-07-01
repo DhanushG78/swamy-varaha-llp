@@ -1,7 +1,6 @@
 import ContentstackLivePreview from "@contentstack/live-preview-utils";
 
 if (typeof window !== "undefined") {
-  console.log("[LivePreview] Initializing Contentstack Live Preview globally on client...");
   ContentstackLivePreview.init({
     enable: process.env.NEXT_PUBLIC_LIVE_PREVIEW_ENABLED === "true",
     stackDetails: {
@@ -12,11 +11,10 @@ if (typeof window !== "undefined") {
       host: "rest-preview.contentstack.com",
     },
     ssr: true,
-    debug: true,
+    debug: false,
   });
 
   ContentstackLivePreview.onEntryChange(() => {
-    console.log("[LivePreview] Entry changed, dispatching event to trigger router.refresh");
     window.dispatchEvent(new CustomEvent("contentstack-preview-update"));
   });
 }

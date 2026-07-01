@@ -22,11 +22,6 @@ const CTABanner = ({ data, isHero = false }: { data: any; isHero?: boolean }) =>
     }
   }
 
-  // Diagnostic logging
-  console.log('[CTA VIDEO DEBUG] Raw CTA Payload:', JSON.stringify(data, null, 2));
-  console.log('[CTA VIDEO DEBUG] Background Video Field:', data?.background_video);
-  console.log('[CTA VIDEO DEBUG] Background Video URL:', bgVideo);
-
   if (bgVideo) {
     return (
       <section 
