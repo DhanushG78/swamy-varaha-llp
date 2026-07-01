@@ -1,17 +1,38 @@
+"use client";
+
+import { useEffect, useState } from "react";
+import Image from "next/image";
+
 const ValueProposition = ({ data }: { data: any }) => {
-  const heading = data?.heading || "Let's find home that's perfect for you";
-  const description = data?.description || "We help you find the ideal property by connecting you with trusted agents, verified listings, and exclusive market insights. Our platform is built on trust, transparency, and a passion for real estate.";
-  const imageUrl = data?.image?.url || "/p1.jpg";
+  const heading = data?.heading || "";
+  const description = data?.description || "";
   const stats = data?.stats || [];
 
-  // Default stats fallback to preserve UI if none provided by CMS
-  const defaultStats = [
-    { stat_number: "2M+", stat_label: "Properties Worldwide" },
-    { stat_number: "Top Rated", stat_label: "Professional Agents" },
-    { stat_number: "100%", stat_label: "Legit Properties" }
-  ];
+  // Resolve images
+  let imageUrls: string[] = [];
+  if (data?.image) {
+    if (Array.isArray(data.image)) {
+      imageUrls = data.image.map((img: any) => img?.url).filter(Boolean);
+    } else if (typeof data.image === "object" && data.image.url) {
+      imageUrls = [data.image.url];
+    } else if (typeof data.image === "string") {
+      imageUrls = [data.image];
+    }
+  }
 
-  const displayStats = stats.length > 0 ? stats : defaultStats;
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  useEffect(() => {
+    if (imageUrls.length <= 1) return;
+    const interval = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % imageUrls.length);
+    }, 4000); // Crossfade every 4 seconds
+    return () => clearInterval(interval);
+  }, [imageUrls.length]);
+
+  if (!heading && !description && imageUrls.length === 0 && stats.length === 0) {
+    return null;
+  }
 
   return (
     <section className="py-16 md:py-24 px-6 bg-white">
@@ -19,23 +40,26 @@ const ValueProposition = ({ data }: { data: any }) => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           {/* Text Column */}
           <div>
-            <h2
-              className="text-2xl font-medium mb-5 leading-tight"
-              style={{ color: "#343a40" }}
-            >
-              {heading}
-            </h2>
+            {heading && (
+              <h2
+                className="text-2xl font-medium mb-5 leading-tight"
+                style={{ color: "#343a40" }}
+              >
+                {heading}
+              </h2>
+            )}
 
-            <p
-              className="text-base leading-relaxed mb-8"
-              style={{ color: "#6c757d" }}
-            >
-              {description}
-            </p>
+            {description && (
+              <div
+                className="text-base leading-relaxed mb-8"
+                style={{ color: "#6c757d" }}
+                dangerouslySetInnerHTML={{ __html: description }}
+              />
+            )}
 
             {/* Icon callouts */}
             <div className="space-y-5">
-              {displayStats.map((stat: any, i: number) => (
+              {stats.map((stat: any, i: number) => (
                 <div key={i} className="flex items-start gap-4">
                   <div
                     className="w-10 h-10 flex items-center justify-center rounded-full flex-shrink-0"
@@ -59,12 +83,20 @@ const ValueProposition = ({ data }: { data: any }) => {
           </div>
 
           {/* Image Column */}
-          <div className="img-zoom rounded-sm overflow-hidden">
-            <img
-              src={imageUrl}
-              alt={heading}
-              className="w-full h-[400px] md:h-[500px] object-cover"
-            />
+          <div className="img-zoom rounded-sm overflow-hidden relative w-full h-[400px] md:h-[500px]">
+            {imageUrls.map((url, idx) => (
+              <Image
+                key={url}
+                src={url}
+                alt={heading || "Value Proposition Image"}
+                fill
+                sizes="(max-width: 768px) 100vw, 50vw"
+                className={`object-cover transition-opacity duration-1000 absolute inset-0 ${
+                  idx === activeIndex ? "opacity-100" : "opacity-0"
+                }`}
+                priority={idx === 0}
+              />
+            ))}
           </div>
         </div>
       </div>
